@@ -1,0 +1,472 @@
+﻿[
+  {
+    "id": 1,
+    "title": "Empanadas Argentinas",
+    "description": "Crispy pastries filled with seasoned beef, onions, and spices. A classic from Argentina.",
+    "author": "Maria Rodriguez",
+    "category": "main-course",
+    "cuisine": "argentinian",
+    "difficulty": "medium",
+    "time": "medium-time",
+    "ingredients": ["beef", "onion", "egg", "flour", "paprika", "cumin"],
+    "tags": ["Argentinian", "Main Course", "Medium"],
+    "views": 2400,
+    "likes": 156,
+    "steps": [
+      {"step": 1, "description": "Prepare the filling by cooking beef with onion and spices."},
+      {"step": 2, "description": "Make the dough by mixing flour, water, and salt."},
+      {"step": 3, "description": "Fill and seal the empanadas."},
+      {"step": 4, "description": "Fry or bake until golden brown."}
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Arepas Venezolanas",
+    "description": "Cornmeal patties, crispy outside and soft inside, filled with cheese, ham, or shredded beef.",
+    "author": "María González",
+    "category": "main-course",
+    "cuisine": "venezuelan",
+    "difficulty": "easy",
+    "time": "quick",
+    "ingredients": ["cornmeal", "water", "salt", "cheese", "butter"],
+    "tags": ["Venezuelan", "Main Course", "Easy"],
+    "views": 2100,
+    "likes": 180,
+    "steps": [
+      {"step": 1, "description": "Mix cornmeal with water and salt until a soft dough forms.", "time": "5 min"},
+      {"step": 2, "description": "Divide the dough into balls and flatten into discs.", "time": "2 min"},
+      {"step": 3, "description": "Cook the arepas on a hot griddle on both sides until golden.", "time": "10 min"},
+      {"step": 4, "description": "Split open and fill with cheese, ham, or shredded beef as desired.", "time": "3 min"}
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Paella Española",
+    "description": "Saffron-scented rice with seafood, chicken, and vegetables, a Spanish classic.",
+    "author": "Antonio Lopez",
+    "category": "main-course",
+    "cuisine": "spanish",
+    "difficulty": "hard",
+    "time": "long",
+    "ingredients": ["rice", "seafood", "chicken", "saffron", "peas"],
+    "tags": ["Spanish", "Main Course", "Hard"],
+    "views": 4100,
+    "likes": 312,
+    "steps": [
+      {"step": 1, "description": "Sauté chicken and seafood in a paella pan."},
+      {"step": 2, "description": "Add rice, saffron, broth, and vegetables."},
+      {"step": 3, "description": "Cook on low heat until the rice absorbs the liquid."},
+      {"step": 4, "description": "Let rest and serve directly from the paella pan."}
+    ]
+  },
+  {
+    "id": 22,
+    "title": "Pabellón Criollo",
+    "description": "Venezuelan national dish: shredded beef, black beans, rice, and fried plantain.",
+    "author": "José Parra",
+    "category": "main-course",
+    "cuisine": "venezuelan",
+    "difficulty": "medium",
+    "time": "long",
+    "ingredients": ["beef", "black beans", "rice", "plantain", "onion", "garlic"],
+    "tags": ["Venezuelan", "Main Course", "Medium"],
+    "views": 1700,
+    "likes": 140,
+    "steps": [
+      {"step": 1, "description": "Cook the beef with onion and garlic until tender, then shred."},
+      {"step": 2, "description": "Prepare the black beans with spices and cook until soft."},
+      {"step": 3, "description": "Fry the plantains until golden brown."},
+      {"step": 4, "description": "Serve beef, beans, rice, and plantains together on the plate."}
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Tamales Mexicanos",
+    "description": "Corn masa filled with savory meats and wrapped in banana leaves, a holiday tradition.",
+    "author": "Elena Vasquez",
+    "category": "main-course",
+    "cuisine": "mexican",
+    "difficulty": "hard",
+    "time": "long",
+    "ingredients": ["corn masa", "pork", "banana leaves", "chili"],
+    "tags": ["Mexican", "Main Course", "Hard"],
+    "views": 1500,
+    "likes": 189,
+    "steps": [
+      {"step": 1, "description": "Prepare the filling by cooking the meat with chilies and spices."},
+      {"step": 2, "description": "Form the tortillas from the corn masa."},
+      {"step": 3, "description": "Fill the tortillas and wrap them in banana leaves."},
+      {"step": 4, "description": "Steam the tamales for several hours."}
+    ]
+  },
+  {
+    "id": 23,
+    "title": "Hallacas Venezolanas",
+    "description": "Traditional Christmas dish: corn dough filled with stew, wrapped in plantain leaves and boiled.",
+    "author": "Carmen Salazar",
+    "category": "main-course",
+    "cuisine": "venezuelan",
+    "difficulty": "hard",
+    "time": "long",
+    "ingredients": ["corn flour", "beef", "pork", "chicken", "olives", "raisins", "plantain leaves"],
+    "tags": ["Venezuelan", "Main Course", "Hard"],
+    "views": 900,
+    "likes": 80,
+    "steps": [
+      {"step": 1, "description": "Prepare the stew with meats, vegetables, olives, and raisins.", "time": "90 min"},
+      {"step": 2, "description": "Make the corn dough and spread it on plantain leaves.", "time": "20 min"},
+      {"step": 3, "description": "Place the stew in the center, fold and tie the hallaca.", "time": "10 min"},
+      {"step": 4, "description": "Boil the hallacas in water for 1 hour.", "time": "60 min"}
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Arepas Colombianas",
+    "description": "Cornmeal patties that are crispy outside and soft inside, perfect with cheese.",
+    "author": "Luis Fernandez",
+    "category": "side-dish",
+    "cuisine": "colombian",
+    "difficulty": "medium",
+    "time": "medium-time",
+    "ingredients": ["cornmeal", "cheese", "butter", "salt"],
+    "tags": ["Colombian", "Side Dish", "Medium"],
+    "views": 1700,
+    "likes": 134,
+    "steps": [
+      {"step": 1, "description": "Mix cornmeal with water and salt until a soft dough forms.", "time": "5 min"},
+      {"step": 2, "description": "Divide the dough into balls and flatten into discs.", "time": "2 min"},
+      {"step": 3, "description": "Cook the arepas on a hot griddle on both sides until golden.", "time": "10 min"},
+      {"step": 4, "description": "Split open and fill with cheese, ham, or shredded beef as desired.", "time": "3 min"}
+    ]
+  },
+  {
+    "id": 24,
+    "title": "Cachapas Venezolanas",
+    "description": "Sweet corn pancakes, served with cheese and butter, typical of Venezuelan cuisine.",
+    "author": "Luis Romero",
+    "category": "main-course",
+    "cuisine": "venezuelan",
+    "difficulty": "easy",
+    "time": "quick",
+    "ingredients": ["corn", "milk", "sugar", "salt", "cheese", "butter"],
+    "tags": ["Venezuelan", "Main Course", "Easy"],
+    "views": 1100,
+    "likes": 95,
+    "steps": [
+      {"step": 1, "description": "Blend corn with milk, sugar, and salt until smooth.", "time": "5 min"},
+      {"step": 2, "description": "Pour the mixture onto a hot griddle and cook on both sides.", "time": "8 min"},
+      {"step": 3, "description": "Serve hot cachapas with cheese and butter as desired.", "time": "2 min"}
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Arroz con Pollo",
+    "description": "Classic chicken and rice dish with aromatic spices, a staple in Latin American homes.",
+    "author": "Carlos Mendez",
+    "category": "main-course",
+    "cuisine": "spanish",
+    "difficulty": "easy",
+    "time": "medium-time",
+    "ingredients": ["chicken", "rice", "bell pepper", "peas", "saffron"],
+    "tags": ["Spanish", "Main Course", "Easy"],
+    "views": 1800,
+    "likes": 203,
+    "steps": [
+      {"step": 1, "description": "Season the chicken with spices and brown in a pot."},
+      {"step": 2, "description": "Add rice, vegetables, and broth. Cook on low heat."},
+      {"step": 3, "description": "When the rice is tender, serve hot."}
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Feijoada Brasileña",
+    "description": "Brazilian black bean stew with pork, sausage, and rice. National dish of Brazil.",
+    "author": "João Silva",
+    "category": "main-course",
+    "cuisine": "brazilian",
+    "difficulty": "hard",
+    "time": "long",
+    "ingredients": ["black beans", "pork", "sausage", "rice", "orange"],
+    "tags": ["Brazilian", "Main Course", "Hard"],
+    "views": 1200,
+    "likes": 175,
+    "steps": [
+      {"step": 1, "description": "Soak the black beans overnight."},
+      {"step": 2, "description": "Cook the beans with pork and sausages."},
+      {"step": 3, "description": "Serve with white rice and orange slices."}
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Ceviche Peruano",
+    "description": "Fresh fish marinated in lime juice with onions, peppers, and cilantro.",
+    "author": "Miguel Santos",
+    "category": "main-course",
+    "cuisine": "peruvian",
+    "difficulty": "medium",
+    "time": "medium-time",
+    "ingredients": ["fish", "lime", "onion", "cilantro", "chili pepper"],
+    "tags": ["Peruvian", "Main Course", "Medium"],
+    "views": 2800,
+    "likes": 234,
+    "steps": [
+      {"step": 1, "description": "Cut the fish into cubes and marinate in lime juice."},
+      {"step": 2, "description": "Add onion, cilantro, and chopped chili."},
+      {"step": 3, "description": "Serve cold as an appetizer."}
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Guacamole Mexicano",
+    "description": "Creamy avocado dip with lime, cilantro, and spices, perfect with tortilla chips.",
+    "author": "Rosa Martinez",
+    "category": "appetizer",
+    "cuisine": "mexican",
+    "difficulty": "easy",
+    "time": "quick",
+    "ingredients": ["avocado", "lime", "cilantro", "onion", "tomato"],
+    "tags": ["Mexican", "Appetizer", "Easy"],
+    "views": 1900,
+    "likes": 145,
+    "steps": [
+      {"step": 1, "description": "Mash the avocados in a bowl."},
+      {"step": 2, "description": "Add onion, tomato, cilantro, and lime juice."},
+      {"step": 3, "description": "Mix well and serve with tortilla chips."}
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Horchata Mexicana",
+    "description": "Creamy rice drink with cinnamon and vanilla, refreshing and sweet.",
+    "author": "Carmen Diaz",
+    "category": "beverage",
+    "cuisine": "mexican",
+    "difficulty": "easy",
+    "time": "quick",
+    "ingredients": ["rice", "cinnamon", "vanilla", "milk"],
+    "tags": ["Mexican", "Beverage", "Easy"],
+    "views": 1300,
+    "likes": 98,
+    "steps": [
+      {"step": 1, "description": "Boil rice with cinnamon in water."},
+      {"step": 2, "description": "Blend cooked rice with milk and sugar."},
+      {"step": 3, "description": "Strain and serve cold with sprinkled cinnamon."}
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Churros Españoles",
+    "description": "Crispy fried dough pastries dusted with cinnamon sugar, perfect with hot chocolate.",
+    "author": "Isabella Torres",
+    "category": "dessert",
+    "cuisine": "spanish",
+    "difficulty": "easy",
+    "time": "quick",
+    "ingredients": ["flour", "sugar", "cinnamon", "oil"],
+    "tags": ["Spanish", "Dessert", "Easy"],
+    "views": 2100,
+    "likes": 167,
+    "steps": [
+      {"step": 1, "description": "Mix flour with water and salt until a dough forms."},
+      {"step": 2, "description": "Heat oil in a deep skillet."},
+      {"step": 3, "description": "Shape dough into strips and fry until golden."},
+      {"step": 4, "description": "Coat churros in sugar mixed with cinnamon."}
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Salsa Verde",
+    "description": "Tangy green salsa made with tomatillos, jalapeños, and fresh herbs.",
+    "author": "Patricia Gomez",
+    "category": "side-dish",
+    "cuisine": "mexican",
+    "difficulty": "easy",
+    "time": "quick",
+    "ingredients": ["tomatillo", "jalapeño", "cilantro", "onion"],
+    "tags": ["Mexican", "Side Dish", "Easy"],
+    "views": 1100,
+    "likes": 92,
+    "steps": [
+      {"step": 1, "description": "Roast tomatillos and jalapeños on a griddle."},
+      {"step": 2, "description": "Blend roasted tomatillos with cilantro and onion."},
+      {"step": 3, "description": "Adjust salt and serve with tacos or as a dip."}
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Suspiro Limeño",
+    "description": "Peruvian dessert with creamy custard base and sweet meringue topping.",
+    "author": "Ana Castillo",
+    "category": "dessert",
+    "cuisine": "peruvian",
+    "difficulty": "hard",
+    "time": "long",
+    "ingredients": ["milk", "egg", "sugar", "vanilla"],
+    "tags": ["Peruvian", "Dessert", "Hard"],
+    "views": 956,
+    "likes": 87,
+    "steps": [
+      {"step": 1, "description": "Prepare the dulce de leche by cooking milk with sugar."},
+      {"step": 2, "description": "Beat egg whites until stiff peaks form with sugar."},
+      {"step": 3, "description": "In a glass, layer dulce de leche and top with meringue."},
+      {"step": 4, "description": "Garnish with cinnamon and serve chilled."}
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Tostones Caribeños",
+    "description": "Twice-fried plantain slices, crispy and golden, popular in the Caribbean.",
+    "author": "Juan Perez",
+    "category": "side-dish",
+    "cuisine": "caribbean",
+    "difficulty": "easy",
+    "time": "quick",
+    "ingredients": ["plantain", "oil", "salt"],
+    "tags": ["Caribbean", "Side Dish", "Easy"],
+    "views": 800,
+    "likes": 65,
+    "steps": [
+      {"step": 1, "description": "Cut green plantains into slices."},
+      {"step": 2, "description": "Fry the slices in hot oil until golden."},
+      {"step": 3, "description": "Flatten the fried slices and fry again."},
+      {"step": 4, "description": "Drain on paper towels and season with salt."}
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Pupusas Salvadoreñas",
+    "description": "Thick corn tortillas stuffed with cheese, beans, or pork. National dish of El Salvador.",
+    "author": "Gloria Ramos",
+    "category": "main-course",
+    "cuisine": "salvadoran",
+    "difficulty": "medium",
+    "time": "medium-time",
+    "ingredients": ["corn masa", "cheese", "beans", "pork"],
+    "tags": ["Salvadoran", "Main Course", "Medium"],
+    "views": 900,
+    "likes": 78,
+    "steps": [
+      {"step": 1, "description": "Mix corn masa with water and salt."},
+      {"step": 2, "description": "Form balls of masa and flatten them."},
+      {"step": 3, "description": "Fill with cheese, beans, or meat and seal."},
+      {"step": 4, "description": "Cook on a hot griddle until golden."}
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Moqueca Brasileña",
+    "description": "Brazilian fish stew with coconut milk, tomatoes, and cilantro.",
+    "author": "Fernanda Costa",
+    "category": "main-course",
+    "cuisine": "brazilian",
+    "difficulty": "medium",
+    "time": "medium-time",
+    "ingredients": ["fish", "coconut milk", "tomato", "cilantro"],
+    "tags": ["Brazilian", "Main Course", "Medium"],
+    "views": 700,
+    "likes": 54,
+    "steps": [
+      {"step": 1, "description": "Marinate the fish with lemon, garlic, and salt."},
+      {"step": 2, "description": "In a pot, cook onion, tomato, and bell pepper."},
+      {"step": 3, "description": "Add the fish and simmer."},
+      {"step": 4, "description": "Stir in coconut milk and cilantro before serving."}
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Ajiaco Colombiano",
+    "description": "Hearty chicken and potato soup with corn and herbs, traditional in Bogotá.",
+    "author": "Sofia Gutierrez",
+    "category": "main-course",
+    "cuisine": "colombian",
+    "difficulty": "medium",
+    "time": "long",
+    "ingredients": ["chicken", "potato", "corn", "guascas", "cream"],
+    "tags": ["Colombian", "Main Course", "Medium"],
+    "views": 600,
+    "likes": 49,
+    "steps": [
+      {"step": 1, "description": "Cook the chicken with water, salt, and spices."},
+      {"step": 2, "description": "Add potatoes, corn on the cob, and guascas."},
+      {"step": 3, "description": "When the potatoes are soft, add cream and serve."}
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Tacos al Pastor",
+    "description": "Mexican tacos with marinated pork, pineapple, and cilantro, served on corn tortillas.",
+    "author": "Luis Morales",
+    "category": "main-course",
+    "cuisine": "mexican",
+    "difficulty": "medium",
+    "time": "medium-time",
+    "ingredients": ["pork", "pineapple", "corn tortilla", "cilantro", "onion"],
+    "tags": ["Mexican", "Main Course", "Medium"],
+    "views": 2200,
+    "likes": 184,
+    "steps": [
+      {"step": 1, "description": "Marinate the pork in achiote, garlic, and pineapple juice."},
+      {"step": 2, "description": "Cook the meat on a vertical spit or grill."},
+      {"step": 3, "description": "Slice the meat and serve in tortillas with pineapple and cilantro."}
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Enchiladas Verdes",
+    "description": "Corn tortillas filled with chicken and covered in green tomatillo sauce.",
+    "author": "Patricia Gomez",
+    "category": "main-course",
+    "cuisine": "mexican",
+    "difficulty": "medium",
+    "time": "medium-time",
+    "ingredients": ["corn tortilla", "chicken", "tomatillo", "cheese"],
+    "tags": ["Mexican", "Main Course", "Medium"],
+    "views": 1400,
+    "likes": 102,
+    "steps": [
+      {"step": 1, "description": "Cook the chicken and shred it."},
+      {"step": 2, "description": "Fill the tortillas with chicken and cheese."},
+      {"step": 3, "description": "Top the enchiladas with green sauce and more cheese."},
+      {"step": 4, "description": "Bake until the cheese melts."}
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Flan de Leche",
+    "description": "Creamy caramel custard dessert, popular throughout Latin America.",
+    "author": "Ana Castillo",
+    "category": "dessert",
+    "cuisine": "latin-american",
+    "difficulty": "easy",
+    "time": "medium-time",
+    "ingredients": ["milk", "egg", "sugar", "vanilla"],
+    "tags": ["Latin American", "Dessert", "Easy"],
+    "views": 1600,
+    "likes": 120,
+    "steps": [
+      {"step": 1, "description": "Caramelize sugar and coat the flan mold."},
+      {"step": 2, "description": "Blend milk, eggs, and sugar until mixed."},
+      {"step": 3, "description": "Pour the mixture into the caramelized mold."},
+      {"step": 4, "description": "Bake in a water bath until set."}
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Pollo a la Brasa",
+    "description": "Peruvian rotisserie chicken marinated with spices, served with fries and salad.",
+    "author": "Miguel Santos",
+    "category": "main-course",
+    "cuisine": "peruvian",
+    "difficulty": "medium",
+    "time": "medium-time",
+    "ingredients": ["chicken", "garlic", "soy sauce", "cumin", "potato"],
+    "tags": ["Peruvian", "Main Course", "Medium"],
+    "views": 2100,
+    "likes": 170,
+    "steps": [
+      {"step": 1, "description": "Marinate the chicken with garlic, soy sauce, and spices."},
+      {"step": 2, "description": "Roast the chicken in an oven or on a grill."},
+      {"step": 3, "description": "Serve with french fries and salad."}
+    ]
+  }
+]

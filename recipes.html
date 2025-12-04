@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor de Casa - Recipes</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<!-- Header Section -->
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <h1>Sabor de Casa</h1>
+        </div>
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="recipes.html" class="nav-link active">Recipes</a>
+            <a href="share.html" class="nav-link">Share</a>
+        </nav>
+    </div>
+    <div class="header-divider"></div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">Recipe Collection</h1>
+            <p class="page-subtitle">Discover traditional recipes from our community</p>
+        </section>
+
+        <!-- Search and Controls -->
+        <section class="search-controls" style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="search-bar">
+                <label for="recipeSearch"></label>
+                <input type="text" id="recipeSearch" class="search-input" placeholder="Search recipes...">
+                <button class="search-button">Search</button>
+            </div>
+            <div class="recipe-count" id="recipeCount"></div>
+        </section>
+
+        <!-- Content Layout -->
+        <div class="content-layout">
+            <!-- Advanced Search Sidebar -->
+            <aside class="advanced-search-sidebar">
+                <div class="search-filters">
+                    <h3 class="filters-title">Filter Recipes</h3>
+
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <h4 class="filter-label">Category</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="appetizer">
+                                <span>Appetizers</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="main-course">
+                                <span>Main Courses</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="dessert">
+                                <span>Desserts</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="beverage">
+                                <span>Beverages</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="side-dish">
+                                <span>Side Dishes</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Cuisine Filter -->
+                    <div class="filter-group">
+                        <h4 class="filter-label">Cuisine</h4>
+                        <div class="filter-options" id="cuisine-filter-options"></div>
+                    </div>
+
+                    <!-- Difficulty Filter -->
+                    <div class="filter-group">
+                        <h4 class="filter-label">Difficulty</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="easy">
+                                <span>Easy</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="medium">
+                                <span>Medium</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="hard">
+                                <span>Hard</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Cooking Time Filter -->
+                    <div class="filter-group">
+                        <h4 class="filter-label">Cooking Time</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="quick">
+                                <span>Under 30 min</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="medium-time">
+                                <span>30-60 min</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="long">
+                                <span>Over 1 hour</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="apply-filters-button">Apply Filters</button>
+                    <button class="clear-filters-button">Clear All</button>
+                </div>
+            </aside>
+
+            <!-- Recipe Grid/List -->
+            <div class="recipe-container">
+                <div class="recipe-grid" id="recipeGrid"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p class="copyright">&copy; 2025 Sabor de Casa. All rights reserved.</p>
+            </div>
+            <div class="footer-timestamp">
+                <p class="last-updated">Last updated: <span id="lastUpdate">December 4, 2025</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="scripts/index.js"></script>
+<script src="scripts/recipes.js"></script>
+</body>
+</html>

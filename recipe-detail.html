@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor de Casa - Recipe Details</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<!-- Header Section -->
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <h1>Sabor de Casa</h1>
+        </div>
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="recipes.html" class="nav-link">Recipes</a>
+            <a href="share.html" class="nav-link">Share</a>
+        </nav>
+    </div>
+    <div class="header-divider"></div>
+</header>
+
+<!-- Progress Indicator -->
+<div class="progress-bar-container">
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 12.5%"></div>
+        </div>
+        <div class="progress-text">
+            <span id="currentStep">Step 1</span> of <span id="totalSteps">8</span>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="container">
+        <!-- Recipe Header -->
+        <section class="recipe-header">
+            <div class="recipe-title-section">
+                <h1 class="recipe-main-title">Traditional Empanadas</h1>
+                <p class="recipe-author">By Maria Rodriguez</p>
+                <div class="recipe-stats">
+                    <span class="stat-item">⏱ 45 min total</span>
+                    <span class="stat-item">👥 Serves 6</span>
+                    <span class="stat-item">📊 Medium difficulty</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipe Content Layout -->
+        <div class="recipe-content-layout">
+            <!-- Left Column - Reference/Prep Area -->
+            <div class="recipe-left-column">
+                <!-- Recipe Photo -->
+                <div class="recipe-photo-section">
+                    <div class="recipe-photo-placeholder">
+                        <span>Recipe Photo</span>
+                    </div>
+                </div>
+
+                <!-- Cultural Context -->
+                <div class="cultural-context">
+                    <h3>Cultural Story</h3>
+                    <p>
+                        Empanadas have been part of Latin American cuisine for centuries, with each region developing its own unique variations. These savory pastries were originally brought to the Americas by Spanish colonizers, but quickly adapted to local ingredients and tastes. In Argentina, empanadas are considered a national dish, while in Colombia they're often served during Christmas celebrations.
+                    </p>
+                </div>
+
+                <!-- Ingredients -->
+                <div class="ingredients-section">
+                    <h3>Ingredients</h3>
+                    <ul class="ingredients-list">
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient1" class="ingredient-checkbox">
+                            <label for="ingredient1">2 cups all-purpose flour</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient2" class="ingredient-checkbox">
+                            <label for="ingredient2">1/2 tsp salt</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient3" class="ingredient-checkbox">
+                            <label for="ingredient3">1/2 cup cold butter, diced</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient4" class="ingredient-checkbox">
+                            <label for="ingredient4">1 egg</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient5" class="ingredient-checkbox">
+                            <label for="ingredient5">1/4 cup cold water</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient6" class="ingredient-checkbox">
+                            <label for="ingredient6">1 lb ground beef</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient7" class="ingredient-checkbox">
+                            <label for="ingredient7">1 onion, diced</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient8" class="ingredient-checkbox">
+                            <label for="ingredient8">2 hard-boiled eggs, chopped</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient9" class="ingredient-checkbox">
+                            <label for="ingredient9">1 tsp cumin</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient10" class="ingredient-checkbox">
+                            <label for="ingredient10">1 tsp paprika</label>
+                        </li>
+                        <li class="ingredient-item">
+                            <input type="checkbox" id="ingredient11" class="ingredient-checkbox">
+                            <label for="ingredient11">Salt and pepper to taste</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column - Active Cooking Area -->
+            <div class="recipe-right-column">
+                <!-- Step Instructions -->
+                <div class="instructions-section">
+                    <h3>Cooking Instructions</h3>
+
+                    <!-- Step 1 -->
+                    <div class="step-item active" data-step="1">
+                        <div class="step-header">
+                            <input type="checkbox" id="step1" class="step-checkbox">
+                            <label for="step1" class="step-number">Step 1</label>
+                            <span class="step-time">15 min</span>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Prepare the dough by mixing flour and salt in a large bowl. Cut in the cold butter using a pastry cutter or your fingertips until the mixture resembles coarse crumbs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-item" data-step="2">
+                        <div class="step-header">
+                            <input type="checkbox" id="step2" class="step-checkbox">
+                            <label for="step2" class="step-number">Step 2</label>
+                            <span class="step-time">5 min</span>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Beat the egg and mix it with cold water. Gradually add this to the flour mixture, stirring until a dough forms. Knead gently on a floured surface until smooth.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-item" data-step="3">
+                        <div class="step-header">
+                            <input type="checkbox" id="step3" class="step-checkbox">
+                            <label for="step3" class="step-number">Step 3</label>
+                            <span class="step-time">60 min</span>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Wrap the dough in plastic wrap and refrigerate for at least 1 hour. This resting period allows the gluten to relax and makes the dough easier to work with.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-item" data-step="4">
+                        <div class="step-header">
+                            <input type="checkbox" id="step4" class="step-checkbox">
+                            <label for="step4" class="step-number">Step 4</label>
+                            <span class="step-time">10 min</span>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                While the dough rests, prepare the filling. Brown the ground beef in a large skillet over medium heat, breaking it up with a spoon as it cooks.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="step-item" data-step="5">
+                        <div class="step-header">
+                            <input type="checkbox" id="step5" class="step-checkbox">
+                            <label for="step5" class="step-number">Step 5</label>
+                            <span class="step-time">8 min</span>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Add the diced onion to the beef and cook until translucent. Season with cumin, paprika, salt, and pepper. Stir in the chopped hard-boiled eggs and remove from heat.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="step-item" data-step="6">
+                        <div class="step-header">
+                            <input type="checkbox" id="step6" class="step-checkbox">
+                            <label for="step6" class="step-number">Step 6</label>
+                            <span class="step-time">15 min</span>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Preheat oven to 375°F (190°C). Roll out the dough on a floured surface to about 1/8 inch thickness. Cut into 4-inch circles using a cookie cutter or bowl.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 7 -->
+                    <div class="step-item" data-step="7">
+                        <div class="step-header">
+                            <input type="checkbox" id="step7" class="step-checkbox">
+                            <label for="step7" class="step-number">Step 7</label>
+                            <span class="step-time">10 min</span>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Place a spoonful of filling in the center of each circle. Fold the dough over to create a half-moon shape and press the edges together. Crimp with a fork to seal.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 8 -->
+                    <div class="step-item" data-step="8">
+                        <div class="step-header">
+                            <input type="checkbox" id="step8" class="step-checkbox">
+                            <label for="step8" class="step-number">Step 8</label>
+                            <span class="step-time">20 min</span>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Place empanadas on a baking sheet lined with parchment paper. Brush with beaten egg for a golden finish. Bake for 18-20 minutes until golden brown. Let cool slightly before serving.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="step-navigation">
+                    <button class="nav-button previous-button" id="prevButton" disabled>
+                        ← Previous Step
+                    </button>
+                    <div class="step-indicator">
+                        <span id="stepIndicator">Step 1 of 8</span>
+                    </div>
+                    <button class="nav-button next-button" id="nextButton">
+                        Next Step →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p class="copyright">&copy; 2025 Sabor de Casa. All rights reserved.</p>
+            </div>
+            <div class="footer-timestamp">
+                <p class="last-updated">Last updated: <span id="lastUpdate">December 4, 2025</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="scripts/index.js"></script>
+<script src="scripts/recipe-detail.js"></script>
+</body>
+</html>

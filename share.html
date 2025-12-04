@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor de Casa - Share</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<!-- Header Section -->
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <h1>Sabor de Casa</h1>
+        </div>
+        <nav class="navigation">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="recipes.html" class="nav-link">Recipes</a>
+            <a href="share.html" class="nav-link active">Share</a>
+        </nav>
+    </div>
+    <div class="header-divider"></div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="container">
+        <!-- Page Header -->
+        <section class="page-header">
+            <h1 class="page-title">Share Your Memory</h1>
+            <p class="page-subtitle">Tell us the story behind your favorite family recipe</p>
+        </section>
+
+        <!-- Content Layout -->
+        <div class="content-layout">
+            <!-- Share Form -->
+            <div class="share-form-container">
+                <form class="share-form" id="shareForm">
+                    <h2 class="form-title">Share Your Culinary Memory</h2>
+
+                    <div class="form-group">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipe" class="form-label">Recipe Name</label>
+                        <input type="text" id="recipe" name="recipe" class="form-input" placeholder="What dish are you sharing?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="memory" class="form-label">Your Memory</label>
+                        <textarea id="memory" name="memory" class="form-textarea" rows="6" placeholder="Tell us the story behind this recipe. What makes it special? Who taught it to you? When do you make it?" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category" class="form-label">Category</label>
+                        <select id="category" name="category" class="form-select" required>
+                            <option value="">Select a category</option>
+                            <option value="appetizer">Appetizer</option>
+                            <option value="main-course">Main Course</option>
+                            <option value="dessert">Dessert</option>
+                            <option value="beverage">Beverage</option>
+                            <option value="side-dish">Side Dish</option>
+                            <option value="holiday-special">Holiday Special</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ingredients" class="form-label">Key Ingredients</label>
+                        <input type="text" id="ingredients" name="ingredients" class="form-input" placeholder="List 3-5 main ingredients (e.g., chicken, rice, saffron)">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-button">Share Memory</button>
+                        <button type="button" class="cancel-button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Sharing Tips -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Sharing Tips</h3>
+                    <ul class="sidebar-list">
+                        <li class="sidebar-item">Tell the story behind the recipe</li>
+                        <li class="sidebar-item">Include who taught it to you</li>
+                        <li class="sidebar-item">Mention when you make it</li>
+                        <li class="sidebar-item">Share what makes it special</li>
+                        <li class="sidebar-item">Add personal anecdotes</li>
+                    </ul>
+                </div>
+
+                <!-- Community Guidelines -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Community Guidelines</h3>
+                    <ul class="sidebar-list">
+                        <li class="sidebar-item">Be respectful and kind</li>
+                        <li class="sidebar-item">Share authentic stories</li>
+                        <li class="sidebar-item">Keep it family-friendly</li>
+                        <li class="sidebar-item">No promotional content</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Community Memories Section -->
+        <section class="memories-section">
+            <h2 class="section-title">Community Memories</h2>
+            <div class="masonry-grid" id="masonryGrid">
+                <!-- Memory Card 1 -->
+                <div class="memory-card">
+                    <div class="card-header">
+                        <span class="user-name">Maria Rodriguez</span>
+                        <span class="date">Dec 3, 2025</span>
+                    </div>
+                    <div class="card-thumbnail">
+                        <div class="thumbnail-placeholder"></div>
+                    </div>
+                    <div class="card-content">
+                        <p class="memory-text">
+                            My grandmother's empanadas always brought the family together during holidays. The secret was in the way she folded the dough, each crease telling a story of tradition and love.
+                        </p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Memory Card 2 -->
+                <div class="memory-card">
+                    <div class="card-header">
+                        <span class="user-name">Carlos Mendez</span>
+                        <span class="date">Dec 2, 2025</span>
+                    </div>
+                    <div class="card-thumbnail">
+                        <div class="thumbnail-placeholder"></div>
+                    </div>
+                    <div class="card-content">
+                        <p class="memory-text">
+                            The aroma of my mother's arroz con pollo would fill our entire neighborhood. Every Sunday, neighbors would ask for the recipe, but she always said the secret ingredient was family.
+                        </p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Memory Card 3 -->
+                <div class="memory-card">
+                    <div class="card-header">
+                        <span class="user-name">Elena Vasquez</span>
+                        <span class="date">Dec 1, 2025</span>
+                    </div>
+                    <div class="card-thumbnail">
+                        <div class="thumbnail-placeholder"></div>
+                    </div>
+                    <div class="card-content">
+                        <p class="memory-text">
+                            Learning to make tamales with my abuela was a rite of passage. The kitchen transformed into a factory of love, with each tamale wrapped in banana leaves and memories.
+                        </p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Memory Card 4 -->
+                <div class="memory-card">
+                    <div class="card-header">
+                        <span class="user-name">Diego Sanchez</span>
+                        <span class="date">Nov 30, 2025</span>
+                    </div>
+                    <div class="card-thumbnail">
+                        <div class="thumbnail-placeholder"></div>
+                    </div>
+                    <div class="card-content">
+                        <p class="memory-text">
+                            My father's weekend asado gatherings were legendary. The grill would sizzle from morning till night, bringing together three generations around stories and smoke.
+                        </p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Memory Card 5 -->
+                <div class="memory-card">
+                    <div class="card-header">
+                        <span class="user-name">Isabella Torres</span>
+                        <span class="date">Nov 29, 2025</span>
+                    </div>
+                    <div class="card-thumbnail">
+                        <div class="thumbnail-placeholder"></div>
+                    </div>
+                    <div class="card-content">
+                        <p class="memory-text">
+                            The first time I made churros for my children, I cried remembering my own childhood. The dusting of cinnamon sugar became our family's sweetest tradition.
+                        </p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Memory Card 6 -->
+                <div class="memory-card">
+                    <div class="card-header">
+                        <span class="user-name">Antonio Lopez</span>
+                        <span class="date">Nov 28, 2025</span>
+                    </div>
+                    <div class="card-thumbnail">
+                        <div class="thumbnail-placeholder"></div>
+                    </div>
+                    <div class="card-content">
+                        <p class="memory-text">
+                            My wife's paella became the centerpiece of every family celebration. The saffron-scented rice carried the essence of our Spanish heritage across generations.
+                        </p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p class="copyright">&copy; 2025 Sabor de Casa. All rights reserved.</p>
+            </div>
+            <div class="footer-timestamp">
+                <p class="last-updated">Last updated: <span id="lastUpdate">December 4, 2025</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="scripts/index.js"></script>
+<script src="scripts/share.js"></script>
+</body>
+</html>
