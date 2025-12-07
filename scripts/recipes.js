@@ -1,8 +1,4 @@
-﻿// Lógica exclusiva para recipes.html
-
-document.addEventListener('DOMContentLoaded', addRecipesPageHandlers);
-
-function addRecipesPageHandlers() {
+﻿function addRecipesPageHandlers() {
     // Layout controls
     const layoutButtons = document.querySelectorAll('.layout-button');
     layoutButtons.forEach(button => {
@@ -177,8 +173,13 @@ function renderRecipeCards(recipes) {
     const grid = document.getElementById('recipeGrid');
     const countEl = document.getElementById('recipeCount');
     if (!grid) return;
-    grid.innerHTML = '';
-    // Obtener el total de recetas desde el JSON original
+
+    const skeletons = grid.querySelectorAll('.skeleton-card');
+    skeletons.forEach(skeleton => skeleton.remove());
+
+    const existingCards = grid.querySelectorAll('.recipe-card');
+    existingCards.forEach(card => card.remove());
+
     fetchRecipes().then(allRecipes => {
         if (countEl) {
             countEl.textContent = `${recipes.length} of ${allRecipes.length} recipes`;
@@ -191,9 +192,28 @@ function renderRecipeCards(recipes) {
         card.setAttribute('data-cuisine', recipe.cuisine);
         card.setAttribute('data-difficulty', recipe.difficulty);
         card.setAttribute('data-time', recipe.time);
+
+        // Generate responsive image HTML
+        const imageHTML = recipe.image
+            ? `<img 
+                srcset="
+                    images/recipes/${recipe.image}-400.webp 400w,
+                    images/recipes/${recipe.image}-800.webp 800w,
+                    images/recipes/${recipe.image}-1200.webp 1200w
+                "
+                sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+                src="images/recipes/${recipe.image}-800.webp"
+                alt="${recipe.title}"
+                width="800"
+                height="600"
+                loading="lazy"
+                class="recipe-image"
+              >`
+            : `<div class="thumbnail-placeholder">${recipe.title}</div>`;
+
         card.innerHTML = `
             <div class="recipe-thumbnail">
-                <div class="thumbnail-placeholder">${recipe.title}</div>
+                ${imageHTML}
             </div>
             <div class="recipe-content">
                 <h3 class="recipe-title">${recipe.title}</h3>
@@ -219,7 +239,6 @@ async function renderCuisineFilters() {
     if (!container) return;
     container.innerHTML = '';
     cuisines.forEach(cuisine => {
-        // Capitalizar la primera letra y mostrar el nombre
         const label = cuisine.charAt(0).toUpperCase() + cuisine.slice(1);
         const el = document.createElement('label');
         el.className = 'filter-option';
@@ -229,6 +248,16 @@ async function renderCuisineFilters() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // Update footer date
+    if (typeof updateFooterDate === 'function') {
+        updateFooterDate();
+    }
+
+    // Initialize hamburger menu
+    if (typeof initHamburgerMenu === 'function') {
+        initHamburgerMenu();
+    }
+
     addRecipesPageHandlers();
     await renderCuisineFilters();
     const recipes = await fetchRecipes();

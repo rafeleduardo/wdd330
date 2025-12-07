@@ -4,21 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabor de Casa - Recipe Details</title>
+    <meta name="description" content="Sabor de Casa - Recipes and Family Food. Preserving family traditions.">
+    <meta name="author" content="Rafael Parra">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Sabor de Casa - Recipes and Family Food">
+    <meta property="og:description" content="Sabor de Casa - Recipes and Family Food. Preserving family traditions.">
+    <meta property="og:image" content="https://rafeleduardo.github.io/wdd231/final/images/sabor-de-casa-logo.webp">
+    <meta property="og:url" content="https://rafeleduardo.github.io/wdd231/final/index.html">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Google Fonts with preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Load CSS -->
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/recipe-detail.css">
+
+    <script src="scripts/index.js" defer></script>
+    <script src="scripts/recipe-detail.js" defer></script>
 </head>
 <body>
 <!-- Header Section -->
 <header class="header">
     <div class="container">
         <div class="logo">
-            <h1>Sabor de Casa</h1>
+            <img src="images/sabor-de-casa-logo-40.webp" alt="Sabor de Casa" class="logo-image" width="40" height="40" fetchpriority="high">
+            <span class="logo-text">Sabor de Casa</span>
         </div>
-        <nav class="navigation">
+        <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="navigation" id="navigation">
             <a href="index.html" class="nav-link">Home</a>
             <a href="recipes.html" class="nav-link">Recipes</a>
             <a href="share.html" class="nav-link">Share</a>
         </nav>
     </div>
+    <div class="nav-overlay" id="navOverlay"></div>
     <div class="header-divider"></div>
 </header>
 
@@ -26,7 +55,7 @@
 <div class="progress-bar-container">
     <div class="container">
         <div class="progress-bar">
-            <div class="progress-fill" id="progressFill" style="width: 12.5%"></div>
+            <div class="progress-fill" id="progressFill"></div>
         </div>
         <div class="progress-text">
             <span id="currentStep">Step 1</span> of <span id="totalSteps">8</span>
@@ -264,6 +293,9 @@
             <div class="footer-info">
                 <p class="copyright">&copy; 2025 Sabor de Casa. All rights reserved.</p>
             </div>
+            <div class="footer-video">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="video-link">📹 Project Video</a>
+            </div>
             <div class="footer-timestamp">
                 <p class="last-updated">Last updated: <span id="lastUpdate">December 4, 2025</span></p>
             </div>
@@ -271,7 +303,5 @@
     </div>
 </footer>
 
-<script src="scripts/index.js"></script>
-<script src="scripts/recipe-detail.js"></script>
 </body>
 </html>

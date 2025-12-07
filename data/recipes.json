@@ -8,15 +8,32 @@
     "cuisine": "argentinian",
     "difficulty": "medium",
     "time": "medium-time",
+    "servings": 6,
+    "totalTime": "45 min total",
+    "image": "empanadas-argentinas",
+    "culturalContext": "Empanadas have been part of Latin American cuisine for centuries, with each region developing its own unique variations. These savory pastries were originally brought to the Americas by Spanish colonizers, but quickly adapted to local ingredients and tastes. In Argentina, empanadas are considered a national dish and are enjoyed at family gatherings and celebrations.",
     "ingredients": ["beef", "onion", "egg", "flour", "paprika", "cumin"],
+    "detailedIngredients": [
+      {"name": "all-purpose flour", "amount": "2 cups"},
+      {"name": "salt", "amount": "1/2 tsp"},
+      {"name": "cold butter, diced", "amount": "1/2 cup"},
+      {"name": "egg", "amount": "1"},
+      {"name": "cold water", "amount": "1/4 cup"},
+      {"name": "ground beef", "amount": "1 lb"},
+      {"name": "onion, diced", "amount": "1"},
+      {"name": "hard-boiled eggs, chopped", "amount": "2"},
+      {"name": "cumin", "amount": "1 tsp"},
+      {"name": "paprika", "amount": "1 tsp"},
+      {"name": "salt and pepper", "amount": "to taste"}
+    ],
     "tags": ["Argentinian", "Main Course", "Medium"],
     "views": 2400,
     "likes": 156,
     "steps": [
-      {"step": 1, "description": "Prepare the filling by cooking beef with onion and spices."},
-      {"step": 2, "description": "Make the dough by mixing flour, water, and salt."},
-      {"step": 3, "description": "Fill and seal the empanadas."},
-      {"step": 4, "description": "Fry or bake until golden brown."}
+      {"step": 1, "description": "Prepare the dough by mixing flour and salt in a large bowl. Cut in the cold butter using a pastry cutter or your fingertips until the mixture resembles coarse crumbs.", "time": "15 min"},
+      {"step": 2, "description": "Beat the egg and mix it with cold water. Gradually add this to the flour mixture, stirring until a dough forms. Knead gently on a floured surface until smooth. Wrap and refrigerate for 1 hour.", "time": "10 min"},
+      {"step": 3, "description": "While the dough rests, brown the ground beef in a large skillet over medium heat. Add the diced onion and cook until translucent. Season with cumin, paprika, salt, and pepper. Stir in the chopped hard-boiled eggs and remove from heat.", "time": "15 min"},
+      {"step": 4, "description": "Preheat oven to 375°F (190°C). Roll out the dough to about 1/8 inch thickness and cut into 4-inch circles. Place a spoonful of filling in the center of each circle, fold over to create a half-moon shape, and crimp with a fork to seal. Brush with beaten egg and bake for 18-20 minutes until golden brown.", "time": "25 min"}
     ]
   },
   {
@@ -28,7 +45,18 @@
     "cuisine": "venezuelan",
     "difficulty": "easy",
     "time": "quick",
+    "servings": 4,
+    "totalTime": "20 min total",
+    "image": "arepas-venezolanas",
+    "culturalContext": "Arepas are a staple food in Venezuelan cuisine, enjoyed at any time of day. Made from pre-cooked cornmeal called 'harina de maíz precocida', these versatile patties can be filled with countless ingredients. In Venezuela, each region has its own favorite filling, making arepas a symbol of national unity and culinary creativity.",
     "ingredients": ["cornmeal", "water", "salt", "cheese", "butter"],
+    "detailedIngredients": [
+      {"name": "pre-cooked cornmeal (harina PAN)", "amount": "2 cups"},
+      {"name": "warm water", "amount": "2 1/2 cups"},
+      {"name": "salt", "amount": "1 tsp"},
+      {"name": "cheese (queso blanco or mozzarella)", "amount": "1 cup, shredded"},
+      {"name": "butter", "amount": "2 tbsp"}
+    ],
     "tags": ["Venezuelan", "Main Course", "Easy"],
     "views": 2100,
     "likes": 180,
@@ -48,15 +76,35 @@
     "cuisine": "spanish",
     "difficulty": "hard",
     "time": "long",
+    "servings": 6,
+    "totalTime": "90 min total",
+    "image": "paella-espanola",
+    "culturalContext": "Paella originated in Valencia, Spain, and has become one of the most iconic dishes of Spanish cuisine. Traditionally cooked outdoors over an open fire, paella brings families together for Sunday gatherings. The saffron-infused rice develops a prized crispy bottom layer called 'socarrat', considered the mark of a well-made paella.",
     "ingredients": ["rice", "seafood", "chicken", "saffron", "peas"],
+    "detailedIngredients": [
+      {"name": "short-grain rice (bomba or calasparra)", "amount": "3 cups"},
+      {"name": "chicken thighs, cut into pieces", "amount": "1 lb"},
+      {"name": "large shrimp, peeled", "amount": "12"},
+      {"name": "mussels, cleaned", "amount": "12"},
+      {"name": "squid, sliced", "amount": "1/2 lb"},
+      {"name": "saffron threads", "amount": "1/2 tsp"},
+      {"name": "chicken or fish broth", "amount": "6 cups"},
+      {"name": "green peas", "amount": "1 cup"},
+      {"name": "red bell pepper, sliced", "amount": "1"},
+      {"name": "tomatoes, diced", "amount": "2"},
+      {"name": "garlic cloves, minced", "amount": "4"},
+      {"name": "olive oil", "amount": "1/4 cup"},
+      {"name": "paprika", "amount": "1 tsp"},
+      {"name": "lemon wedges", "amount": "for serving"}
+    ],
     "tags": ["Spanish", "Main Course", "Hard"],
     "views": 4100,
     "likes": 312,
     "steps": [
-      {"step": 1, "description": "Sauté chicken and seafood in a paella pan."},
-      {"step": 2, "description": "Add rice, saffron, broth, and vegetables."},
-      {"step": 3, "description": "Cook on low heat until the rice absorbs the liquid."},
-      {"step": 4, "description": "Let rest and serve directly from the paella pan."}
+      {"step": 1, "description": "Heat olive oil in a large paella pan over medium-high heat. Season chicken with salt and pepper, then brown on all sides. Remove and set aside.", "time": "15 min"},
+      {"step": 2, "description": "In the same pan, sauté garlic and red bell pepper until softened. Add diced tomatoes and paprika, cooking until tomatoes break down. Return chicken to the pan.", "time": "10 min"},
+      {"step": 3, "description": "Add rice to the pan, stirring to coat with the mixture. Dissolve saffron in warm broth, then pour over the rice. Arrange seafood and peas on top. Do not stir from this point forward.", "time": "5 min"},
+      {"step": 4, "description": "Cook on medium heat without stirring for 20-25 minutes until rice absorbs liquid and forms a crispy bottom layer (socarrat). Let rest 5 minutes before serving with lemon wedges.", "time": "30 min"}
     ]
   },
   {
@@ -68,15 +116,33 @@
     "cuisine": "venezuelan",
     "difficulty": "medium",
     "time": "long",
+    "servings": 4,
+    "totalTime": "120 min total",
+    "image": "pabellon-criollo",
+    "culturalContext": "Pabellón Criollo is Venezuela's national dish, representing the country's multicultural heritage. The combination of shredded beef (carne mechada), black beans, white rice, and fried plantains creates a perfect harmony of flavors and textures. This dish is served at family gatherings and celebrations throughout the country.",
     "ingredients": ["beef", "black beans", "rice", "plantain", "onion", "garlic"],
+    "detailedIngredients": [
+      {"name": "flank steak", "amount": "2 lbs"},
+      {"name": "dried black beans", "amount": "2 cups"},
+      {"name": "white rice", "amount": "2 cups"},
+      {"name": "ripe plantains", "amount": "2"},
+      {"name": "onions, sliced", "amount": "2"},
+      {"name": "garlic cloves, minced", "amount": "6"},
+      {"name": "bell peppers, sliced", "amount": "2"},
+      {"name": "tomatoes, diced", "amount": "2"},
+      {"name": "cumin", "amount": "2 tsp"},
+      {"name": "vegetable oil", "amount": "for frying"},
+      {"name": "bay leaves", "amount": "2"},
+      {"name": "salt and pepper", "amount": "to taste"}
+    ],
     "tags": ["Venezuelan", "Main Course", "Medium"],
     "views": 1700,
     "likes": 140,
     "steps": [
-      {"step": 1, "description": "Cook the beef with onion and garlic until tender, then shred."},
-      {"step": 2, "description": "Prepare the black beans with spices and cook until soft."},
-      {"step": 3, "description": "Fry the plantains until golden brown."},
-      {"step": 4, "description": "Serve beef, beans, rice, and plantains together on the plate."}
+      {"step": 1, "description": "Place flank steak in a large pot with water, salt, and bay leaves. Bring to a boil, then reduce heat and simmer for 60-90 minutes until tender. Remove beef, let cool slightly, then shred with two forks.", "time": "90 min"},
+      {"step": 2, "description": "Soak black beans overnight. Drain and cook in fresh water with garlic, onion, and cumin for 60 minutes until soft. Season with salt.", "time": "70 min"},
+      {"step": 3, "description": "In a large skillet, sauté onions, bell peppers, and garlic. Add shredded beef, tomatoes, cumin, salt, and pepper. Cook for 15 minutes until flavors meld.", "time": "20 min"},
+      {"step": 4, "description": "Cook rice according to package directions. Peel and slice plantains diagonally. Fry in hot oil until golden. Serve all components together on a plate.", "time": "25 min"}
     ]
   },
   {
@@ -88,15 +154,31 @@
     "cuisine": "mexican",
     "difficulty": "hard",
     "time": "long",
+    "servings": 12,
+    "totalTime": "180 min total",
+    "image": "tamales-mexicanos",
+    "culturalContext": "Tamales hold deep cultural significance in Mexican tradition, dating back to pre-Columbian times. These labor-intensive delicacies are typically prepared for special occasions and holidays, especially Christmas and Día de los Muertos. Making tamales is often a family affair, with multiple generations gathering to assemble hundreds at a time.",
     "ingredients": ["corn masa", "pork", "banana leaves", "chili"],
+    "detailedIngredients": [
+      {"name": "masa harina (corn flour)", "amount": "4 cups"},
+      {"name": "lard or vegetable shortening", "amount": "1 cup"},
+      {"name": "chicken or pork broth", "amount": "2 cups"},
+      {"name": "baking powder", "amount": "1 tsp"},
+      {"name": "salt", "amount": "1 tsp"},
+      {"name": "pork shoulder, diced", "amount": "2 lbs"},
+      {"name": "dried chili peppers", "amount": "6"},
+      {"name": "garlic cloves", "amount": "4"},
+      {"name": "cumin", "amount": "1 tsp"},
+      {"name": "dried corn husks or banana leaves", "amount": "24 pieces"}
+    ],
     "tags": ["Mexican", "Main Course", "Hard"],
     "views": 1500,
     "likes": 189,
     "steps": [
-      {"step": 1, "description": "Prepare the filling by cooking the meat with chilies and spices."},
-      {"step": 2, "description": "Form the tortillas from the corn masa."},
-      {"step": 3, "description": "Fill the tortillas and wrap them in banana leaves."},
-      {"step": 4, "description": "Steam the tamales for several hours."}
+      {"step": 1, "description": "Soak corn husks or banana leaves in warm water for 30 minutes until pliable. Cook pork in water with garlic and salt until tender, about 60 minutes. Shred the meat.", "time": "70 min"},
+      {"step": 2, "description": "Toast dried chilies, remove seeds, and blend with garlic, cumin, and cooking liquid to make a sauce. Toss shredded pork with the sauce.", "time": "15 min"},
+      {"step": 3, "description": "Beat lard until fluffy. Mix masa harina with baking powder and salt. Gradually add broth and beaten lard, mixing until dough is light and spreadable.", "time": "20 min"},
+      {"step": 4, "description": "Spread 2-3 tablespoons of masa on each corn husk, add filling in the center, fold sides in and bottom up. Stand tamales upright in a steamer and steam for 60-75 minutes until masa pulls away from husks.", "time": "90 min"}
     ]
   },
   {
@@ -108,15 +190,36 @@
     "cuisine": "venezuelan",
     "difficulty": "hard",
     "time": "long",
+    "servings": 15,
+    "totalTime": "240 min total",
+    "image": "hallaca-venezolana",
+    "culturalContext": "Hallacas are Venezuela's most cherished Christmas tradition. This complex dish reflects the country's multicultural heritage, combining indigenous corn dough, Spanish meat and spices, and African ingredients. Making hallacas is a family event that takes place in early December, with everyone contributing to create dozens that will be enjoyed throughout the holiday season.",
     "ingredients": ["corn flour", "beef", "pork", "chicken", "olives", "raisins", "plantain leaves"],
+    "detailedIngredients": [
+      {"name": "corn flour (harina PAN)", "amount": "4 cups"},
+      {"name": "chicken broth", "amount": "3 cups"},
+      {"name": "beef chuck, diced", "amount": "1 lb"},
+      {"name": "pork shoulder, diced", "amount": "1 lb"},
+      {"name": "chicken breast, diced", "amount": "1 lb"},
+      {"name": "onions, chopped", "amount": "2"},
+      {"name": "bell peppers, diced", "amount": "2"},
+      {"name": "tomatoes, diced", "amount": "3"},
+      {"name": "green olives", "amount": "1 cup"},
+      {"name": "raisins", "amount": "1/2 cup"},
+      {"name": "capers", "amount": "1/4 cup"},
+      {"name": "paprika", "amount": "2 tsp"},
+      {"name": "cumin", "amount": "1 tsp"},
+      {"name": "plantain leaves", "amount": "30 pieces"},
+      {"name": "kitchen twine", "amount": "for tying"}
+    ],
     "tags": ["Venezuelan", "Main Course", "Hard"],
     "views": 900,
     "likes": 80,
     "steps": [
-      {"step": 1, "description": "Prepare the stew with meats, vegetables, olives, and raisins.", "time": "90 min"},
-      {"step": 2, "description": "Make the corn dough and spread it on plantain leaves.", "time": "20 min"},
-      {"step": 3, "description": "Place the stew in the center, fold and tie the hallaca.", "time": "10 min"},
-      {"step": 4, "description": "Boil the hallacas in water for 1 hour.", "time": "60 min"}
+      {"step": 1, "description": "Prepare the stew (guiso): Cook beef, pork, and chicken separately until tender. In a large pot, sauté onions, bell peppers, and tomatoes. Add the cooked meats, paprika, cumin, olives, raisins, and capers. Simmer for 30 minutes.", "time": "90 min"},
+      {"step": 2, "description": "Make the corn dough: Mix corn flour with warm chicken broth until smooth and pliable. Clean plantain leaves by wiping with a damp cloth and briefly passing over an open flame to make them flexible.", "time": "20 min"},
+      {"step": 3, "description": "Lay out a plantain leaf, spread a thin layer of dough in the center (about 1/4 cup). Place 2-3 tablespoons of stew in the middle, fold the leaf over to enclose, and tie securely with twine.", "time": "60 min"},
+      {"step": 4, "description": "Bring a large pot of water to a boil. Add hallacas and boil for 60 minutes. Remove and let cool slightly before serving. Hallacas can be frozen and reheated.", "time": "70 min"}
     ]
   },
   {
@@ -128,7 +231,18 @@
     "cuisine": "colombian",
     "difficulty": "medium",
     "time": "medium-time",
+    "servings": 4,
+    "totalTime": "20 min total",
+    "image": "arepas-colombianas",
+    "culturalContext": "Colombian arepas are thicker and often filled with cheese (arepa de queso) or egg (arepa de huevo). They're a breakfast staple throughout Colombia, enjoyed with butter, cheese, or as a side dish. Each region has its own variation, making arepas a versatile symbol of Colombian cuisine.",
     "ingredients": ["cornmeal", "cheese", "butter", "salt"],
+    "detailedIngredients": [
+      {"name": "pre-cooked white cornmeal", "amount": "2 cups"},
+      {"name": "warm water", "amount": "2 1/2 cups"},
+      {"name": "salt", "amount": "1 tsp"},
+      {"name": "mozzarella or queso blanco, shredded", "amount": "1 cup"},
+      {"name": "butter", "amount": "2 tbsp"}
+    ],
     "tags": ["Colombian", "Side Dish", "Medium"],
     "views": 1700,
     "likes": 134,
@@ -141,6 +255,7 @@
   },
   {
     "id": 24,
+    "image": "cachapas-venezolanas",
     "title": "Cachapas Venezolanas",
     "description": "Sweet corn pancakes, served with cheese and butter, typical of Venezuelan cuisine.",
     "author": "Luis Romero",
@@ -148,7 +263,18 @@
     "cuisine": "venezuelan",
     "difficulty": "easy",
     "time": "quick",
+    "servings": 4,
+    "totalTime": "15 min total",
+    "culturalContext": "Cachapas are a beloved Venezuelan street food and breakfast item. Made from fresh sweet corn, these golden pancakes are typically served folded in half with white cheese melting inside. Cachapas represent the simplicity and sweetness of Venezuelan home cooking.",
     "ingredients": ["corn", "milk", "sugar", "salt", "cheese", "butter"],
+    "detailedIngredients": [
+      {"name": "fresh or frozen corn kernels", "amount": "3 cups"},
+      {"name": "milk", "amount": "1/2 cup"},
+      {"name": "sugar", "amount": "2 tbsp"},
+      {"name": "salt", "amount": "1/2 tsp"},
+      {"name": "queso de mano or mozzarella", "amount": "1 cup, sliced"},
+      {"name": "butter", "amount": "for cooking"}
+    ],
     "tags": ["Venezuelan", "Main Course", "Easy"],
     "views": 1100,
     "likes": 95,
@@ -160,6 +286,7 @@
   },
   {
     "id": 2,
+    "image": "arroz-con-pollo",
     "title": "Arroz con Pollo",
     "description": "Classic chicken and rice dish with aromatic spices, a staple in Latin American homes.",
     "author": "Carlos Mendez",
@@ -167,18 +294,36 @@
     "cuisine": "spanish",
     "difficulty": "easy",
     "time": "medium-time",
+    "servings": 6,
+    "totalTime": "50 min total",
+    "culturalContext": "Arroz con Pollo is a comfort food staple found throughout Latin America and Spain, with each country adding its own twist. This one-pot meal brings families together around the dinner table. The aromatic combination of saffron, vegetables, and tender chicken makes it a perennial favorite.",
     "ingredients": ["chicken", "rice", "bell pepper", "peas", "saffron"],
+    "detailedIngredients": [
+      {"name": "chicken pieces (thighs and drumsticks)", "amount": "3 lbs"},
+      {"name": "long-grain rice", "amount": "2 cups"},
+      {"name": "red bell pepper, diced", "amount": "1"},
+      {"name": "green peas", "amount": "1 cup"},
+      {"name": "saffron threads", "amount": "1/4 tsp"},
+      {"name": "chicken broth", "amount": "4 cups"},
+      {"name": "onion, chopped", "amount": "1"},
+      {"name": "garlic cloves, minced", "amount": "4"},
+      {"name": "tomato sauce", "amount": "1/2 cup"},
+      {"name": "olive oil", "amount": "3 tbsp"},
+      {"name": "salt and pepper", "amount": "to taste"}
+    ],
     "tags": ["Spanish", "Main Course", "Easy"],
     "views": 1800,
     "likes": 203,
     "steps": [
-      {"step": 1, "description": "Season the chicken with spices and brown in a pot."},
-      {"step": 2, "description": "Add rice, vegetables, and broth. Cook on low heat."},
-      {"step": 3, "description": "When the rice is tender, serve hot."}
+      {"step": 1, "description": "Season chicken pieces with salt and pepper. Heat olive oil in a large pot and brown chicken on all sides, about 8 minutes. Remove and set aside.", "time": "10 min"},
+      {"step": 2, "description": "In the same pot, sauté onion, garlic, and bell pepper until softened. Add rice and stir to coat. Add tomato sauce and saffron, stirring to combine.", "time": "8 min"},
+      {"step": 3, "description": "Return chicken to pot. Add chicken broth and bring to a boil. Reduce heat to low, cover, and simmer for 20 minutes. Add peas in the last 5 minutes of cooking.", "time": "25 min"},
+      {"step": 4, "description": "Remove from heat and let rest covered for 5 minutes. Fluff rice with a fork and serve hot.", "time": "7 min"}
     ]
   },
   {
     "id": 4,
+    "image": "feijoada-brasilena",
     "title": "Feijoada Brasileña",
     "description": "Brazilian black bean stew with pork, sausage, and rice. National dish of Brazil.",
     "author": "João Silva",
@@ -186,14 +331,31 @@
     "cuisine": "brazilian",
     "difficulty": "hard",
     "time": "long",
+    "servings": 8,
+    "totalTime": "180 min total",
+    "culturalContext": "Feijoada is Brazil's national dish, traditionally served on Wednesdays and Saturdays. This hearty stew originated from enslaved Africans who combined inexpensive cuts of pork with black beans. Today, it's a celebration meal served with rice, collard greens, orange slices, and farofa, bringing families together for leisurely meals.",
     "ingredients": ["black beans", "pork", "sausage", "rice", "orange"],
+    "detailedIngredients": [
+      {"name": "dried black beans", "amount": "1 lb"},
+      {"name": "pork shoulder, cubed", "amount": "1 lb"},
+      {"name": "smoked sausage (linguiça), sliced", "amount": "1 lb"},
+      {"name": "bacon, chopped", "amount": "1/2 lb"},
+      {"name": "pork ribs", "amount": "1 lb"},
+      {"name": "onions, chopped", "amount": "2"},
+      {"name": "garlic cloves, minced", "amount": "6"},
+      {"name": "bay leaves", "amount": "3"},
+      {"name": "orange slices", "amount": "for serving"},
+      {"name": "white rice", "amount": "3 cups cooked"},
+      {"name": "salt and pepper", "amount": "to taste"}
+    ],
     "tags": ["Brazilian", "Main Course", "Hard"],
     "views": 1200,
     "likes": 175,
     "steps": [
-      {"step": 1, "description": "Soak the black beans overnight."},
-      {"step": 2, "description": "Cook the beans with pork and sausages."},
-      {"step": 3, "description": "Serve with white rice and orange slices."}
+      {"step": 1, "description": "Soak black beans in water overnight. Drain and rinse before cooking.", "time": "10 min"},
+      {"step": 2, "description": "In a large pot, cook bacon until crispy. Add pork shoulder, ribs, and sausage. Brown all meats, about 15 minutes.", "time": "20 min"},
+      {"step": 3, "description": "Add drained beans, onions, garlic, bay leaves, and enough water to cover by 2 inches. Bring to a boil, then reduce heat and simmer for 2-3 hours until beans are tender and mixture is thick.", "time": "150 min"},
+      {"step": 4, "description": "Season with salt and pepper. Serve hot over white rice with orange slices on the side. The citrus cuts through the richness of the stew.", "time": "10 min"}
     ]
   },
   {
@@ -205,14 +367,30 @@
     "cuisine": "peruvian",
     "difficulty": "medium",
     "time": "medium-time",
+    "servings": 4,
+    "totalTime": "30 min total",
+    "image": "ceviche-peruano",
+    "culturalContext": "Ceviche is Peru's national dish and a source of immense pride. The fish is 'cooked' by the acidity of lime juice in a process called denaturation. This refreshing dish showcases Peru's access to the Pacific Ocean and represents the country's culinary excellence. It's traditionally enjoyed as a midday meal.",
     "ingredients": ["fish", "lime", "onion", "cilantro", "chili pepper"],
+    "detailedIngredients": [
+      {"name": "fresh white fish (sea bass or tilapia), cubed", "amount": "1.5 lbs"},
+      {"name": "fresh lime juice", "amount": "1 cup"},
+      {"name": "red onion, thinly sliced", "amount": "1"},
+      {"name": "fresh cilantro, chopped", "amount": "1/2 cup"},
+      {"name": "ají amarillo or jalapeño, minced", "amount": "1"},
+      {"name": "garlic clove, minced", "amount": "1"},
+      {"name": "sweet potato, boiled and sliced", "amount": "1"},
+      {"name": "corn on the cob, cooked", "amount": "1"},
+      {"name": "salt and pepper", "amount": "to taste"}
+    ],
     "tags": ["Peruvian", "Main Course", "Medium"],
     "views": 2800,
     "likes": 234,
     "steps": [
-      {"step": 1, "description": "Cut the fish into cubes and marinate in lime juice."},
-      {"step": 2, "description": "Add onion, cilantro, and chopped chili."},
-      {"step": 3, "description": "Serve cold as an appetizer."}
+      {"step": 1, "description": "Cut fish into 1/2-inch cubes, ensuring it's very fresh. Place in a non-reactive bowl.", "time": "10 min"},
+      {"step": 2, "description": "Soak sliced red onion in cold water for 5 minutes to reduce sharpness, then drain. Add to fish along with lime juice, covering the fish completely. Marinate in refrigerator for 15-20 minutes until fish turns opaque.", "time": "20 min"},
+      {"step": 3, "description": "Add minced chili, garlic, cilantro, salt, and pepper. Toss gently to combine.", "time": "3 min"},
+      {"step": 4, "description": "Serve immediately in shallow bowls with the marinade (leche de tigre), accompanied by sweet potato slices and corn.", "time": "2 min"}
     ]
   },
   {
@@ -224,18 +402,34 @@
     "cuisine": "mexican",
     "difficulty": "easy",
     "time": "quick",
+    "servings": 6,
+    "totalTime": "10 min total",
+    "image": "guacamole-mexicano",
+    "culturalContext": "Guacamole has been enjoyed in Mexico since Aztec times. The name comes from the Nahuatl word 'āhuacamolli', meaning avocado sauce. This simple yet flavorful dish showcases the creamy richness of avocados and is a staple at Mexican gatherings, served with tortilla chips or as a topping for tacos.",
     "ingredients": ["avocado", "lime", "cilantro", "onion", "tomato"],
+    "detailedIngredients": [
+      {"name": "ripe avocados", "amount": "3"},
+      {"name": "lime juice", "amount": "2 tbsp"},
+      {"name": "fresh cilantro, chopped", "amount": "3 tbsp"},
+      {"name": "white onion, finely diced", "amount": "1/4 cup"},
+      {"name": "tomato, diced", "amount": "1"},
+      {"name": "jalapeño, minced (optional)", "amount": "1"},
+      {"name": "salt", "amount": "1/2 tsp"},
+      {"name": "tortilla chips", "amount": "for serving"}
+    ],
     "tags": ["Mexican", "Appetizer", "Easy"],
     "views": 1900,
     "likes": 145,
     "steps": [
-      {"step": 1, "description": "Mash the avocados in a bowl."},
-      {"step": 2, "description": "Add onion, tomato, cilantro, and lime juice."},
-      {"step": 3, "description": "Mix well and serve with tortilla chips."}
+      {"step": 1, "description": "Cut avocados in half, remove pit, and scoop flesh into a bowl. Mash with a fork to desired consistency (chunky or smooth).", "time": "3 min"},
+      {"step": 2, "description": "Add lime juice immediately to prevent browning. Stir in diced onion, tomato, cilantro, and jalapeño if using.", "time": "4 min"},
+      {"step": 3, "description": "Season with salt and mix well. Taste and adjust seasoning as needed.", "time": "2 min"},
+      {"step": 4, "description": "Serve immediately with tortilla chips. Press plastic wrap directly onto surface to prevent browning if storing.", "time": "1 min"}
     ]
   },
   {
     "id": 9,
+    "image": "horchata-mexicana",
     "title": "Horchata Mexicana",
     "description": "Creamy rice drink with cinnamon and vanilla, refreshing and sweet.",
     "author": "Carmen Diaz",
@@ -243,18 +437,32 @@
     "cuisine": "mexican",
     "difficulty": "easy",
     "time": "quick",
+    "servings": 6,
+    "totalTime": "30 min total",
+    "culturalContext": "Horchata is a beloved Mexican beverage with roots in Spanish tradition, adapted to use rice instead of tiger nuts. This sweet, milky drink is especially popular during hot weather and is a staple at taquerías and Mexican restaurants. Its cooling properties make it the perfect companion to spicy foods.",
     "ingredients": ["rice", "cinnamon", "vanilla", "milk"],
+    "detailedIngredients": [
+      {"name": "long-grain white rice", "amount": "1 cup"},
+      {"name": "cinnamon stick", "amount": "1"},
+      {"name": "water", "amount": "4 cups"},
+      {"name": "milk", "amount": "1 cup"},
+      {"name": "sugar", "amount": "3/4 cup"},
+      {"name": "vanilla extract", "amount": "1 tsp"},
+      {"name": "ground cinnamon", "amount": "for garnish"}
+    ],
     "tags": ["Mexican", "Beverage", "Easy"],
     "views": 1300,
     "likes": 98,
     "steps": [
-      {"step": 1, "description": "Boil rice with cinnamon in water."},
-      {"step": 2, "description": "Blend cooked rice with milk and sugar."},
-      {"step": 3, "description": "Strain and serve cold with sprinkled cinnamon."}
+      {"step": 1, "description": "Place rice and cinnamon stick in a bowl. Cover with 2 cups of hot water and let soak for at least 3 hours or overnight.", "time": "5 min"},
+      {"step": 2, "description": "Remove cinnamon stick. Blend soaked rice with its water until smooth, about 2 minutes.", "time": "3 min"},
+      {"step": 3, "description": "Strain mixture through cheesecloth or fine mesh strainer into a pitcher. Add remaining 2 cups water, milk, sugar, and vanilla. Stir until sugar dissolves.", "time": "8 min"},
+      {"step": 4, "description": "Refrigerate until cold. Serve over ice with a sprinkle of ground cinnamon.", "time": "2 min"}
     ]
   },
   {
     "id": 10,
+    "image": "churros-espanoles",
     "title": "Churros Españoles",
     "description": "Crispy fried dough pastries dusted with cinnamon sugar, perfect with hot chocolate.",
     "author": "Isabella Torres",
@@ -262,19 +470,33 @@
     "cuisine": "spanish",
     "difficulty": "easy",
     "time": "quick",
+    "servings": 6,
+    "totalTime": "30 min total",
+    "culturalContext": "Churros are an iconic Spanish treat, traditionally enjoyed for breakfast dipped in thick hot chocolate. Street vendors sell them throughout Spain, and the aroma draws crowds. The first time I made churros for my children, I cried remembering my own childhood. The dusting of cinnamon sugar became our family's sweetest tradition.",
     "ingredients": ["flour", "sugar", "cinnamon", "oil"],
+    "detailedIngredients": [
+      {"name": "water", "amount": "1 cup"},
+      {"name": "butter", "amount": "2 tbsp"},
+      {"name": "salt", "amount": "1/4 tsp"},
+      {"name": "all-purpose flour", "amount": "1 cup"},
+      {"name": "eggs", "amount": "3"},
+      {"name": "vegetable oil", "amount": "for frying"},
+      {"name": "sugar", "amount": "1/2 cup"},
+      {"name": "ground cinnamon", "amount": "1 tsp"}
+    ],
     "tags": ["Spanish", "Dessert", "Easy"],
     "views": 2100,
     "likes": 167,
     "steps": [
-      {"step": 1, "description": "Mix flour with water and salt until a dough forms."},
-      {"step": 2, "description": "Heat oil in a deep skillet."},
-      {"step": 3, "description": "Shape dough into strips and fry until golden."},
-      {"step": 4, "description": "Coat churros in sugar mixed with cinnamon."}
+      {"step": 1, "description": "In a saucepan, bring water, butter, and salt to a boil. Remove from heat and stir in flour until mixture forms a ball. Let cool for 5 minutes.", "time": "8 min"},
+      {"step": 2, "description": "Beat in eggs one at a time until dough is smooth. Transfer to a piping bag fitted with a large star tip.", "time": "5 min"},
+      {"step": 3, "description": "Heat 2 inches of oil in a deep skillet to 375°F. Pipe 4-inch strips of dough into hot oil. Fry until golden brown, about 2 minutes per side. Drain on paper towels.", "time": "12 min"},
+      {"step": 4, "description": "Mix sugar and cinnamon in a shallow dish. Roll warm churros in cinnamon sugar. Serve immediately with hot chocolate for dipping.", "time": "5 min"}
     ]
   },
   {
     "id": 11,
+    "image": "salsa-verde",
     "title": "Salsa Verde",
     "description": "Tangy green salsa made with tomatillos, jalapeños, and fresh herbs.",
     "author": "Patricia Gomez",
@@ -282,18 +504,32 @@
     "cuisine": "mexican",
     "difficulty": "easy",
     "time": "quick",
+    "servings": 8,
+    "totalTime": "15 min total",
+    "culturalContext": "Salsa verde is a staple condiment in Mexican cuisine, bringing bright acidity and heat to countless dishes. The tomatillo, a member of the nightshade family, gives this salsa its distinctive tang. Every Mexican household has their own version, passed down through generations.",
     "ingredients": ["tomatillo", "jalapeño", "cilantro", "onion"],
+    "detailedIngredients": [
+      {"name": "tomatillos, husks removed", "amount": "1 lb"},
+      {"name": "jalapeños", "amount": "2-3"},
+      {"name": "fresh cilantro", "amount": "1/2 cup"},
+      {"name": "white onion, chopped", "amount": "1/4 cup"},
+      {"name": "garlic cloves", "amount": "2"},
+      {"name": "lime juice", "amount": "1 tbsp"},
+      {"name": "salt", "amount": "1 tsp"}
+    ],
     "tags": ["Mexican", "Side Dish", "Easy"],
     "views": 1100,
     "likes": 92,
     "steps": [
-      {"step": 1, "description": "Roast tomatillos and jalapeños on a griddle."},
-      {"step": 2, "description": "Blend roasted tomatillos with cilantro and onion."},
-      {"step": 3, "description": "Adjust salt and serve with tacos or as a dip."}
+      {"step": 1, "description": "Place tomatillos and jalapeños on a hot griddle or under the broiler. Roast until charred and softened, about 8 minutes, turning occasionally.", "time": "8 min"},
+      {"step": 2, "description": "Transfer roasted vegetables to a blender. Add cilantro, onion, garlic, lime juice, and salt. Blend until smooth or leave slightly chunky, depending on preference.", "time": "3 min"},
+      {"step": 3, "description": "Taste and adjust salt. For spicier salsa, add more jalapeños or their seeds. Serve immediately or refrigerate up to 5 days.", "time": "2 min"},
+      {"step": 4, "description": "Use as a taco topping, chip dip, or drizzle over grilled meats and eggs.", "time": "2 min"}
     ]
   },
   {
     "id": 12,
+    "image": "suspiro-limeño",
     "title": "Suspiro Limeño",
     "description": "Peruvian dessert with creamy custard base and sweet meringue topping.",
     "author": "Ana Castillo",
@@ -301,19 +537,33 @@
     "cuisine": "peruvian",
     "difficulty": "hard",
     "time": "long",
+    "servings": 6,
+    "totalTime": "90 min total",
+    "culturalContext": "Suspiro Limeño, meaning 'Lima's sigh', is a romantic Peruvian dessert created in the 19th century. The name reflects its delicate, cloud-like meringue topping and rich dulce de leche base. This elegant dessert is served at special occasions and represents Peru's sophisticated dessert tradition.",
     "ingredients": ["milk", "egg", "sugar", "vanilla"],
+    "detailedIngredients": [
+      {"name": "sweetened condensed milk", "amount": "1 can (14 oz)"},
+      {"name": "evaporated milk", "amount": "1 can (12 oz)"},
+      {"name": "egg yolks", "amount": "4"},
+      {"name": "egg whites", "amount": "3"},
+      {"name": "sugar", "amount": "1 cup"},
+      {"name": "vanilla extract", "amount": "1 tsp"},
+      {"name": "port wine", "amount": "2 tbsp"},
+      {"name": "ground cinnamon", "amount": "for garnish"}
+    ],
     "tags": ["Peruvian", "Dessert", "Hard"],
     "views": 956,
     "likes": 87,
     "steps": [
-      {"step": 1, "description": "Prepare the dulce de leche by cooking milk with sugar."},
-      {"step": 2, "description": "Beat egg whites until stiff peaks form with sugar."},
-      {"step": 3, "description": "In a glass, layer dulce de leche and top with meringue."},
-      {"step": 4, "description": "Garnish with cinnamon and serve chilled."}
+      {"step": 1, "description": "In a saucepan, combine condensed milk, evaporated milk, and egg yolks. Cook over medium-low heat, stirring constantly for 30-40 minutes until thick like dulce de leche. Stir in vanilla and port wine. Let cool.", "time": "45 min"},
+      {"step": 2, "description": "In a clean bowl, beat egg whites until soft peaks form. Gradually add sugar and continue beating until stiff, glossy peaks form.", "time": "8 min"},
+      {"step": 3, "description": "Divide the dulce de leche mixture among 6 serving glasses. Top each with a generous dollop of meringue, creating swirls with a spoon.", "time": "5 min"},
+      {"step": 4, "description": "Dust with ground cinnamon and refrigerate for at least 2 hours before serving. The contrast of sweet custard and airy meringue is divine.", "time": "2 min"}
     ]
   },
   {
     "id": 13,
+    "image": "tostones-caribeños",
     "title": "Tostones Caribeños",
     "description": "Twice-fried plantain slices, crispy and golden, popular in the Caribbean.",
     "author": "Juan Perez",
@@ -321,19 +571,29 @@
     "cuisine": "caribbean",
     "difficulty": "easy",
     "time": "quick",
+    "servings": 4,
+    "totalTime": "20 min total",
+    "culturalContext": "Tostones, also known as patacones in some regions, are a beloved Caribbean side dish found throughout Puerto Rico, Dominican Republic, and coastal Latin America. The double-frying technique creates an irresistibly crispy exterior while maintaining a tender interior. They're often served with garlic sauce (mojo) or as a base for toppings.",
     "ingredients": ["plantain", "oil", "salt"],
+    "detailedIngredients": [
+      {"name": "green plantains", "amount": "3"},
+      {"name": "vegetable oil", "amount": "for frying"},
+      {"name": "salt", "amount": "to taste"},
+      {"name": "garlic cloves, minced (optional)", "amount": "3"}
+    ],
     "tags": ["Caribbean", "Side Dish", "Easy"],
     "views": 800,
     "likes": 65,
     "steps": [
-      {"step": 1, "description": "Cut green plantains into slices."},
-      {"step": 2, "description": "Fry the slices in hot oil until golden."},
-      {"step": 3, "description": "Flatten the fried slices and fry again."},
-      {"step": 4, "description": "Drain on paper towels and season with salt."}
+      {"step": 1, "description": "Peel green plantains and cut into 1-inch thick rounds. Heat 1 inch of oil in a deep skillet to 350°F.", "time": "5 min"},
+      {"step": 2, "description": "Fry plantain slices for 3-4 minutes until golden but not crispy. Remove and drain on paper towels.", "time": "5 min"},
+      {"step": 3, "description": "Using a tostonera or the bottom of a glass, flatten each slice to about 1/4 inch thickness. Return oil to heat.", "time": "3 min"},
+      {"step": 4, "description": "Fry flattened plantains again for 2-3 minutes until crispy and golden. Drain, season with salt (and garlic if desired), and serve hot.", "time": "7 min"}
     ]
   },
   {
     "id": 14,
+    "image": "pupusas-salvadorenas",
     "title": "Pupusas Salvadoreñas",
     "description": "Thick corn tortillas stuffed with cheese, beans, or pork. National dish of El Salvador.",
     "author": "Gloria Ramos",
@@ -341,19 +601,31 @@
     "cuisine": "salvadoran",
     "difficulty": "medium",
     "time": "medium-time",
+    "servings": 6,
+    "totalTime": "40 min total",
+    "culturalContext": "Pupusas are El Salvador's national dish, with origins dating back to the Pipil tribes over 2,000 years ago. These thick, handmade corn tortillas are traditionally filled with cheese, beans, or chicharrón. Pupusas are served with curtido (pickled cabbage slaw) and salsa roja, creating a perfect balance of flavors.",
     "ingredients": ["corn masa", "cheese", "beans", "pork"],
+    "detailedIngredients": [
+      {"name": "masa harina", "amount": "2 cups"},
+      {"name": "warm water", "amount": "1 1/2 cups"},
+      {"name": "salt", "amount": "1/2 tsp"},
+      {"name": "mozzarella cheese, shredded", "amount": "1 cup"},
+      {"name": "refried beans", "amount": "1 cup"},
+      {"name": "cooked pork, finely chopped", "amount": "1 cup"}
+    ],
     "tags": ["Salvadoran", "Main Course", "Medium"],
     "views": 900,
     "likes": 78,
     "steps": [
-      {"step": 1, "description": "Mix corn masa with water and salt."},
-      {"step": 2, "description": "Form balls of masa and flatten them."},
-      {"step": 3, "description": "Fill with cheese, beans, or meat and seal."},
-      {"step": 4, "description": "Cook on a hot griddle until golden."}
+      {"step": 1, "description": "Mix masa harina with warm water and salt until a soft, pliable dough forms. Cover and let rest for 10 minutes.", "time": "12 min"},
+      {"step": 2, "description": "Divide dough into golf ball-sized portions. Flatten each ball in your palm to create a small cup. Add 1-2 tablespoons of filling (cheese, beans, or pork) in the center.", "time": "10 min"},
+      {"step": 3, "description": "Fold edges over filling and seal, then gently flatten into a 1/4-inch thick disc, being careful not to let filling escape.", "time": "8 min"},
+      {"step": 4, "description": "Cook pupusas on a hot, ungreased griddle for 3-4 minutes per side until lightly charred. Serve hot with curtido and salsa.", "time": "10 min"}
     ]
   },
   {
     "id": 15,
+    "image": "muqueca-brasileña",
     "title": "Moqueca Brasileña",
     "description": "Brazilian fish stew with coconut milk, tomatoes, and cilantro.",
     "author": "Fernanda Costa",
@@ -361,19 +633,35 @@
     "cuisine": "brazilian",
     "difficulty": "medium",
     "time": "medium-time",
+    "servings": 4,
+    "totalTime": "45 min total",
+    "culturalContext": "Moqueca is a traditional Brazilian seafood stew from the coastal regions of Bahia and Espírito Santo. This fragrant dish showcases African influences in Brazilian cuisine, with its use of dendê oil (red palm oil) and coconut milk. The colorful clay pot it's traditionally served in adds to its rustic charm.",
     "ingredients": ["fish", "coconut milk", "tomato", "cilantro"],
+    "detailedIngredients": [
+      {"name": "firm white fish fillets (cod or snapper)", "amount": "1.5 lbs"},
+      {"name": "lime juice", "amount": "3 tbsp"},
+      {"name": "coconut milk", "amount": "1 can (14 oz)"},
+      {"name": "tomatoes, diced", "amount": "3"},
+      {"name": "onion, sliced", "amount": "1"},
+      {"name": "bell peppers (red and yellow), sliced", "amount": "2"},
+      {"name": "garlic cloves, minced", "amount": "4"},
+      {"name": "fresh cilantro, chopped", "amount": "1/2 cup"},
+      {"name": "palm oil or olive oil", "amount": "2 tbsp"},
+      {"name": "salt and pepper", "amount": "to taste"}
+    ],
     "tags": ["Brazilian", "Main Course", "Medium"],
     "views": 700,
     "likes": 54,
     "steps": [
-      {"step": 1, "description": "Marinate the fish with lemon, garlic, and salt."},
-      {"step": 2, "description": "In a pot, cook onion, tomato, and bell pepper."},
-      {"step": 3, "description": "Add the fish and simmer."},
-      {"step": 4, "description": "Stir in coconut milk and cilantro before serving."}
+      {"step": 1, "description": "Cut fish into large chunks. Marinate with lime juice, minced garlic, salt, and pepper for 15 minutes.", "time": "17 min"},
+      {"step": 2, "description": "In a large pot or clay pot (panela), heat oil over medium heat. Sauté onion and remaining garlic until softened. Add bell peppers and tomatoes, cooking for 5 minutes.", "time": "8 min"},
+      {"step": 3, "description": "Arrange marinated fish pieces on top of vegetables. Pour coconut milk over fish. Cover and simmer gently for 15 minutes until fish is cooked through.", "time": "15 min"},
+      {"step": 4, "description": "Gently stir in fresh cilantro. Serve hot in the cooking pot with white rice and farofa (toasted cassava flour).", "time": "5 min"}
     ]
   },
   {
     "id": 16,
+    "image": "ajiaco-colombiano",
     "title": "Ajiaco Colombiano",
     "description": "Hearty chicken and potato soup with corn and herbs, traditional in Bogotá.",
     "author": "Sofia Gutierrez",
@@ -381,18 +669,37 @@
     "cuisine": "colombian",
     "difficulty": "medium",
     "time": "long",
+    "servings": 6,
+    "totalTime": "90 min total",
+    "culturalContext": "Ajiaco is Bogotá's signature dish, perfect for the city's cool mountain climate. This hearty soup features three types of potatoes that break down to create a thick, creamy broth. The distinctive herb guascas gives ajiaco its unique flavor. Served with avocado, capers, and cream, it's comfort food at its finest.",
     "ingredients": ["chicken", "potato", "corn", "guascas", "cream"],
+    "detailedIngredients": [
+      {"name": "chicken breasts", "amount": "2 lbs"},
+      {"name": "Yukon gold potatoes, cubed", "amount": "3"},
+      {"name": "red potatoes, cubed", "amount": "3"},
+      {"name": "russet potatoes, cubed", "amount": "2"},
+      {"name": "corn on the cob, cut into thirds", "amount": "2 ears"},
+      {"name": "dried guascas (Colombian herb)", "amount": "2 tbsp"},
+      {"name": "scallions, chopped", "amount": "4"},
+      {"name": "garlic cloves", "amount": "4"},
+      {"name": "chicken broth", "amount": "8 cups"},
+      {"name": "heavy cream", "amount": "1 cup"},
+      {"name": "avocado, sliced", "amount": "for serving"},
+      {"name": "capers", "amount": "for serving"}
+    ],
     "tags": ["Colombian", "Main Course", "Medium"],
     "views": 600,
     "likes": 49,
     "steps": [
-      {"step": 1, "description": "Cook the chicken with water, salt, and spices."},
-      {"step": 2, "description": "Add potatoes, corn on the cob, and guascas."},
-      {"step": 3, "description": "When the potatoes are soft, add cream and serve."}
+      {"step": 1, "description": "In a large pot, combine chicken, chicken broth, scallions, and garlic. Bring to a boil, then simmer for 25 minutes until chicken is cooked. Remove chicken and shred when cool.", "time": "30 min"},
+      {"step": 2, "description": "Add all three types of potatoes to the broth. Simmer for 20 minutes. The russet potatoes will break down, thickening the soup naturally.", "time": "20 min"},
+      {"step": 3, "description": "Add corn pieces and guascas. Continue simmering for 15 more minutes. Return shredded chicken to pot.", "time": "15 min"},
+      {"step": 4, "description": "Stir in heavy cream. Season with salt and pepper. Serve hot in bowls, topped with avocado slices and capers. Traditionally served with white rice on the side.", "time": "5 min"}
     ]
   },
   {
     "id": 17,
+    "image": "tacos-al-pastor",
     "title": "Tacos al Pastor",
     "description": "Mexican tacos with marinated pork, pineapple, and cilantro, served on corn tortillas.",
     "author": "Luis Morales",
@@ -400,18 +707,37 @@
     "cuisine": "mexican",
     "difficulty": "medium",
     "time": "medium-time",
+    "servings": 6,
+    "totalTime": "60 min total",
+    "culturalContext": "Tacos al Pastor were inspired by Lebanese immigrants who brought shawarma to Mexico in the early 1900s. The vertical spit-roasting technique was adapted using Mexican flavors: achiote, pineapple, and chilies. Today, tacos al pastor are one of Mexico City's most iconic street foods, with taquerías serving them late into the night.",
     "ingredients": ["pork", "pineapple", "corn tortilla", "cilantro", "onion"],
+    "detailedIngredients": [
+      {"name": "pork shoulder, thinly sliced", "amount": "2 lbs"},
+      {"name": "dried guajillo chilies", "amount": "4"},
+      {"name": "pineapple, diced", "amount": "1 cup"},
+      {"name": "pineapple juice", "amount": "1/2 cup"},
+      {"name": "white onion, diced", "amount": "1"},
+      {"name": "fresh cilantro, chopped", "amount": "1/2 cup"},
+      {"name": "garlic cloves", "amount": "4"},
+      {"name": "achiote paste", "amount": "2 tbsp"},
+      {"name": "white vinegar", "amount": "2 tbsp"},
+      {"name": "cumin", "amount": "1 tsp"},
+      {"name": "corn tortillas", "amount": "18 small"},
+      {"name": "lime wedges", "amount": "for serving"}
+    ],
     "tags": ["Mexican", "Main Course", "Medium"],
     "views": 2200,
     "likes": 184,
     "steps": [
-      {"step": 1, "description": "Marinate the pork in achiote, garlic, and pineapple juice."},
-      {"step": 2, "description": "Cook the meat on a vertical spit or grill."},
-      {"step": 3, "description": "Slice the meat and serve in tortillas with pineapple and cilantro."}
+      {"step": 1, "description": "Toast guajillo chilies in a dry skillet, remove seeds, and soak in hot water for 10 minutes. Blend with garlic, achiote paste, pineapple juice, vinegar, cumin, and salt to make marinade. Marinate pork slices for at least 2 hours or overnight.", "time": "20 min"},
+      {"step": 2, "description": "Heat a large skillet or griddle over high heat. Cook marinated pork in batches until charred and caramelized, about 4 minutes per side. Chop into small pieces.", "time": "15 min"},
+      {"step": 3, "description": "Quickly char pineapple chunks on the hot griddle until caramelized. Warm corn tortillas on the griddle.", "time": "5 min"},
+      {"step": 4, "description": "Assemble tacos: place chopped pork on warm tortillas, top with pineapple, diced onion, and fresh cilantro. Serve with lime wedges and salsa.", "time": "10 min"}
     ]
   },
   {
     "id": 18,
+    "image": "enchiladas-verdes",
     "title": "Enchiladas Verdes",
     "description": "Corn tortillas filled with chicken and covered in green tomatillo sauce.",
     "author": "Patricia Gomez",
@@ -419,19 +745,35 @@
     "cuisine": "mexican",
     "difficulty": "medium",
     "time": "medium-time",
+    "servings": 6,
+    "totalTime": "50 min total",
+    "culturalContext": "Enchiladas are a cornerstone of Mexican cuisine, dating back to the Mayan era. The word 'enchilada' means 'in chili', referring to the sauce-covered tortillas. Enchiladas verdes, with their tangy tomatillo sauce, are a lighter alternative to red enchiladas and are beloved throughout Mexico, especially in central regions.",
     "ingredients": ["corn tortilla", "chicken", "tomatillo", "cheese"],
+    "detailedIngredients": [
+      {"name": "cooked chicken breast, shredded", "amount": "3 cups"},
+      {"name": "corn tortillas", "amount": "12"},
+      {"name": "tomatillos, husked", "amount": "1 lb"},
+      {"name": "jalapeños", "amount": "2"},
+      {"name": "onion, quartered", "amount": "1/2"},
+      {"name": "garlic cloves", "amount": "2"},
+      {"name": "fresh cilantro", "amount": "1/2 cup"},
+      {"name": "Mexican crema or sour cream", "amount": "1 cup"},
+      {"name": "queso fresco or Monterey Jack, crumbled", "amount": "1 1/2 cups"},
+      {"name": "chicken broth", "amount": "1/2 cup"}
+    ],
     "tags": ["Mexican", "Main Course", "Medium"],
     "views": 1400,
     "likes": 102,
     "steps": [
-      {"step": 1, "description": "Cook the chicken and shred it."},
-      {"step": 2, "description": "Fill the tortillas with chicken and cheese."},
-      {"step": 3, "description": "Top the enchiladas with green sauce and more cheese."},
-      {"step": 4, "description": "Bake until the cheese melts."}
+      {"step": 1, "description": "Roast tomatillos, jalapeños, onion, and garlic under the broiler until charred, about 10 minutes. Blend with cilantro, broth, and salt until smooth to make salsa verde.", "time": "15 min"},
+      {"step": 2, "description": "Briefly warm tortillas on a griddle to make them pliable. Dip each tortilla in salsa verde, then fill with shredded chicken and a sprinkle of cheese. Roll tightly.", "time": "15 min"},
+      {"step": 3, "description": "Arrange rolled enchiladas seam-side down in a baking dish. Pour remaining salsa verde over top and sprinkle with cheese.", "time": "5 min"},
+      {"step": 4, "description": "Bake at 350°F for 20 minutes until cheese melts and edges are slightly crispy. Top with crema, more cheese, and cilantro before serving.", "time": "25 min"}
     ]
   },
   {
     "id": 19,
+    "image": "flan-de-leche",
     "title": "Flan de Leche",
     "description": "Creamy caramel custard dessert, popular throughout Latin America.",
     "author": "Ana Castillo",
@@ -439,19 +781,30 @@
     "cuisine": "latin-american",
     "difficulty": "easy",
     "time": "medium-time",
+    "servings": 8,
+    "totalTime": "60 min total",
+    "culturalContext": "Flan is a beloved dessert throughout Latin America, Spain, and Portugal, with each region adding its own twist. This silky custard with caramel sauce is a staple at celebrations, from birthdays to holidays. The gentle wobble of a perfectly made flan is a source of pride for home cooks across the continent.",
     "ingredients": ["milk", "egg", "sugar", "vanilla"],
+    "detailedIngredients": [
+      {"name": "sugar", "amount": "1 1/2 cups (divided)"},
+      {"name": "whole milk", "amount": "2 cups"},
+      {"name": "sweetened condensed milk", "amount": "1 can (14 oz)"},
+      {"name": "eggs", "amount": "5"},
+      {"name": "vanilla extract", "amount": "1 tsp"}
+    ],
     "tags": ["Latin American", "Dessert", "Easy"],
     "views": 1600,
     "likes": 120,
     "steps": [
-      {"step": 1, "description": "Caramelize sugar and coat the flan mold."},
-      {"step": 2, "description": "Blend milk, eggs, and sugar until mixed."},
-      {"step": 3, "description": "Pour the mixture into the caramelized mold."},
-      {"step": 4, "description": "Bake in a water bath until set."}
+      {"step": 1, "description": "Preheat oven to 350°F. In a heavy saucepan, melt 3/4 cup sugar over medium heat without stirring until golden amber. Immediately pour into a 9-inch round baking dish, tilting to coat the bottom evenly. Let harden.", "time": "10 min"},
+      {"step": 2, "description": "In a blender, combine remaining 3/4 cup sugar, whole milk, condensed milk, eggs, and vanilla. Blend until smooth, about 1 minute.", "time": "5 min"},
+      {"step": 3, "description": "Pour custard mixture over hardened caramel. Place baking dish in a larger roasting pan. Pour hot water into roasting pan to come halfway up the sides of the flan dish (water bath/baño maría).", "time": "5 min"},
+      {"step": 4, "description": "Bake for 50-60 minutes until center is just set but still jiggly. Remove from water bath, cool completely, then refrigerate at least 4 hours. To serve, run a knife around edge and invert onto a rimmed plate.", "time": "65 min"}
     ]
   },
   {
     "id": 20,
+    "image": "pollo-brasa",
     "title": "Pollo a la Brasa",
     "description": "Peruvian rotisserie chicken marinated with spices, served with fries and salad.",
     "author": "Miguel Santos",
@@ -459,14 +812,31 @@
     "cuisine": "peruvian",
     "difficulty": "medium",
     "time": "medium-time",
+    "servings": 4,
+    "totalTime": "70 min total",
+    "culturalContext": "Pollo a la Brasa is Peru's most popular dish, invented in Lima in the 1950s. The chicken is marinated in a unique blend of spices including soy sauce, cumin, and ají panca, then roasted to perfection. It's traditionally served with crispy french fries and ají verde (green chili sauce), creating an irresistible combination that has made Peruvian chicken restaurants famous worldwide.",
     "ingredients": ["chicken", "garlic", "soy sauce", "cumin", "potato"],
+    "detailedIngredients": [
+      {"name": "whole chicken, butterflied", "amount": "1 (4 lbs)"},
+      {"name": "garlic cloves, minced", "amount": "8"},
+      {"name": "soy sauce", "amount": "1/4 cup"},
+      {"name": "dark beer", "amount": "1/4 cup"},
+      {"name": "ground cumin", "amount": "2 tbsp"},
+      {"name": "paprika", "amount": "1 tbsp"},
+      {"name": "black pepper", "amount": "1 tsp"},
+      {"name": "dried oregano", "amount": "1 tsp"},
+      {"name": "vegetable oil", "amount": "2 tbsp"},
+      {"name": "russet potatoes for fries", "amount": "4"},
+      {"name": "salt", "amount": "to taste"}
+    ],
     "tags": ["Peruvian", "Main Course", "Medium"],
     "views": 2100,
     "likes": 170,
     "steps": [
-      {"step": 1, "description": "Marinate the chicken with garlic, soy sauce, and spices."},
-      {"step": 2, "description": "Roast the chicken in an oven or on a grill."},
-      {"step": 3, "description": "Serve with french fries and salad."}
+      {"step": 1, "description": "In a bowl, combine minced garlic, soy sauce, beer, cumin, paprika, pepper, oregano, oil, and salt to make marinade. Rub all over butterflied chicken, inside and out. Marinate for at least 4 hours or overnight.", "time": "10 min"},
+      {"step": 2, "description": "Preheat oven to 400°F or prepare grill for indirect heat. If using oven, place chicken on a rack over a baking sheet. Roast for 50-60 minutes, turning once, until skin is crispy and internal temperature reaches 165°F.", "time": "60 min"},
+      {"step": 3, "description": "While chicken cooks, cut potatoes into fries and soak in cold water for 15 minutes. Drain, pat dry, and fry in hot oil (350°F) until golden and crispy.", "time": "25 min"},
+      {"step": 4, "description": "Let chicken rest 10 minutes before carving. Serve with crispy fries, salad, and ají verde sauce. The smoky, garlicky chicken with tangy green sauce is unforgettable.", "time": "10 min"}
     ]
   }
 ]

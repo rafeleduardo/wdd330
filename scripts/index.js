@@ -1,4 +1,50 @@
-﻿// Funciones utilitarias globales para Sabor de Casa
+﻿function updateFooterDate() {
+    const lastUpdateElement = document.getElementById('lastUpdate');
+    if (lastUpdateElement) {
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        lastUpdateElement.textContent = now.toLocaleDateString('en-US', options);
+    }
+}
+
+// Hamburger menu toggle
+function initHamburgerMenu() {
+    const hamburger = document.getElementById('hamburgerMenu');
+    const navigation = document.getElementById('navigation');
+    const overlay = document.getElementById('navOverlay');
+
+    if (!hamburger || !navigation || !overlay) return;
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        navigation.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = navigation.classList.contains('active') ? 'hidden' : '';
+    }
+
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        navigation.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+
+    overlay.addEventListener('click', closeMenu);
+
+    const navLinks = navigation.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navigation.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+}
+
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
@@ -35,13 +81,6 @@ function showNotification(message, type = 'info') {
     }, 4000);
 }
 
-// Lógica exclusiva para index.html (home)
-function addHomePageHandlers() {
-    // Aquí puedes agregar lógica exclusiva para la home si es necesario
-    // Por ahora solo ejemplo de mensaje de bienvenida
-    console.log('Página principal cargada');
-}
-
 async function fetchRecipes() {
     try {
         const res = await fetch('data/recipes.json');
@@ -63,7 +102,6 @@ function shuffleArray(arr) {
 }
 
 function pickTopRecipes(recipes, count = 3, poolSize = 8) {
-    // Combine likes and views for ranking
     const sorted = recipes.slice().sort((a, b) => (b.likes + b.views) - (a.likes + a.views));
     const pool = sorted.slice(0, poolSize);
     const shuffled = shuffleArray(pool);
@@ -73,13 +111,29 @@ function pickTopRecipes(recipes, count = 3, poolSize = 8) {
 function renderRecipeSpotlights(recipes) {
     const container = document.getElementById('recipe-spotlights');
     if (!container) return;
-    container.innerHTML = '';
-    recipes.forEach(recipe => {
+
+    const skeletons = container.querySelectorAll('.skeleton-card');
+    skeletons.forEach(skeleton => skeleton.remove());
+
+    recipes.forEach((recipe, index) => {
         const card = document.createElement('article');
         card.className = 'recipe-card';
+
+        const imageHTML = recipe.image
+            ? `<img
+                src="images/recipes/${recipe.image}-320.webp"
+                alt="${recipe.title}"
+                width="320"
+                height="240"
+                fetchpriority="high"
+                class="recipe-image"
+                decoding="async"
+              >`
+            : `<div class="thumbnail-placeholder">${recipe.title}</div>`;
+
         card.innerHTML = `
             <div class="recipe-thumbnail">
-                <div class="thumbnail-placeholder">${recipe.title}</div>
+                ${imageHTML}
             </div>
             <div class="recipe-content">
                 <h3 class="recipe-title">${recipe.title}</h3>
@@ -97,7 +151,8 @@ function renderRecipeSpotlights(recipes) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    addHomePageHandlers();
+    updateFooterDate();
+    initHamburgerMenu();
     const recipes = await fetchRecipes();
     const spotlights = pickTopRecipes(recipes, 3, 8);
     renderRecipeSpotlights(spotlights);

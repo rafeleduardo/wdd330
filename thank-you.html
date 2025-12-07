@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Sabor de Casa</title>
+    <meta name="description" content="Thank you for sharing your culinary memory with Sabor de Casa.">
+    <meta name="author" content="Rafael Parra">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Google Fonts with preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/thankyou.css">
+</head>
+<body>
+<!-- Header Section -->
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="images/sabor-de-casa-logo-40.webp" alt="Sabor de Casa" class="logo-image" width="40" height="40" fetchpriority="high">
+            <span class="logo-text">Sabor de Casa</span>
+        </div>
+        <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="navigation" id="navigation">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="recipes.html" class="nav-link">Recipes</a>
+            <a href="share.html" class="nav-link">Share</a>
+        </nav>
+    </div>
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="header-divider"></div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="container">
+        <!-- Thank You Section -->
+        <section class="thank-you-section">
+            <div class="thank-you-content">
+                <div class="success-icon">✓</div>
+                <h1 class="thank-you-title">Thank You for Sharing!</h1>
+                <p class="thank-you-message">
+                    Your culinary memory has been saved and will appear in the Community Memories section.
+                </p>
+
+                <div class="shared-memory-preview" id="memoryPreview">
+                    <h2 class="preview-title">Your Shared Memory</h2>
+                    <div class="preview-content">
+                        <p><strong>Name:</strong> <span id="previewName"></span></p>
+                        <p><strong>Recipe:</strong> <span id="previewRecipe"></span></p>
+                        <p><strong>Category:</strong> <span id="previewCategory"></span></p>
+                        <div class="preview-memory">
+                            <strong>Your Story:</strong>
+                            <p id="previewMemoryText"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thank-you-actions">
+                    <a href="share.html" class="cta-button primary">View Community Memories</a>
+                    <a href="recipes.html" class="cta-button secondary">Browse Recipes</a>
+                    <a href="index.html" class="cta-button secondary">Back to Home</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p class="copyright">&copy; 2025 Sabor de Casa. All rights reserved.</p>
+            </div>
+            <div class="footer-video">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="video-link">📹 Project Video</a>
+            </div>
+            <div class="footer-timestamp">
+                <p class="last-updated">Last updated: <span id="lastUpdate">December 6, 2025</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

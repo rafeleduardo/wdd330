@@ -4,21 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabor de Casa - Share</title>
+    <meta name="description" content="Sabor de Casa - Recipes and Family Food. Preserving family traditions.">
+    <meta name="author" content="Rafael Parra">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Sabor de Casa - Recipes and Family Food">
+    <meta property="og:description" content="Sabor de Casa - Recipes and Family Food. Preserving family traditions.">
+    <meta property="og:image" content="https://rafeleduardo.github.io/wdd231/final/images/sabor-de-casa-logo.webp">
+    <meta property="og:url" content="https://rafeleduardo.github.io/wdd231/final/index.html">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Google Fonts with preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Load CSS -->
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/share.css">
+
+    <script src="scripts/index.js" defer></script>
+    <script src="scripts/share.js" defer></script>
 </head>
 <body>
 <!-- Header Section -->
 <header class="header">
     <div class="container">
         <div class="logo">
-            <h1>Sabor de Casa</h1>
+            <img src="images/sabor-de-casa-logo-40.webp" alt="Sabor de Casa" class="logo-image" width="40" height="40" fetchpriority="high">
+            <span class="logo-text">Sabor de Casa</span>
         </div>
-        <nav class="navigation">
+        <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="navigation" id="navigation">
             <a href="index.html" class="nav-link">Home</a>
             <a href="recipes.html" class="nav-link">Recipes</a>
             <a href="share.html" class="nav-link active">Share</a>
         </nav>
     </div>
+    <div class="nav-overlay" id="navOverlay"></div>
     <div class="header-divider"></div>
 </header>
 
@@ -109,107 +138,7 @@
         <section class="memories-section">
             <h2 class="section-title">Community Memories</h2>
             <div class="masonry-grid" id="masonryGrid">
-                <!-- Memory Card 1 -->
-                <div class="memory-card">
-                    <div class="card-header">
-                        <span class="user-name">Maria Rodriguez</span>
-                        <span class="date">Dec 3, 2025</span>
-                    </div>
-                    <div class="card-thumbnail">
-                        <div class="thumbnail-placeholder"></div>
-                    </div>
-                    <div class="card-content">
-                        <p class="memory-text">
-                            My grandmother's empanadas always brought the family together during holidays. The secret was in the way she folded the dough, each crease telling a story of tradition and love.
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-
-                <!-- Memory Card 2 -->
-                <div class="memory-card">
-                    <div class="card-header">
-                        <span class="user-name">Carlos Mendez</span>
-                        <span class="date">Dec 2, 2025</span>
-                    </div>
-                    <div class="card-thumbnail">
-                        <div class="thumbnail-placeholder"></div>
-                    </div>
-                    <div class="card-content">
-                        <p class="memory-text">
-                            The aroma of my mother's arroz con pollo would fill our entire neighborhood. Every Sunday, neighbors would ask for the recipe, but she always said the secret ingredient was family.
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-
-                <!-- Memory Card 3 -->
-                <div class="memory-card">
-                    <div class="card-header">
-                        <span class="user-name">Elena Vasquez</span>
-                        <span class="date">Dec 1, 2025</span>
-                    </div>
-                    <div class="card-thumbnail">
-                        <div class="thumbnail-placeholder"></div>
-                    </div>
-                    <div class="card-content">
-                        <p class="memory-text">
-                            Learning to make tamales with my abuela was a rite of passage. The kitchen transformed into a factory of love, with each tamale wrapped in banana leaves and memories.
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-
-                <!-- Memory Card 4 -->
-                <div class="memory-card">
-                    <div class="card-header">
-                        <span class="user-name">Diego Sanchez</span>
-                        <span class="date">Nov 30, 2025</span>
-                    </div>
-                    <div class="card-thumbnail">
-                        <div class="thumbnail-placeholder"></div>
-                    </div>
-                    <div class="card-content">
-                        <p class="memory-text">
-                            My father's weekend asado gatherings were legendary. The grill would sizzle from morning till night, bringing together three generations around stories and smoke.
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-
-                <!-- Memory Card 5 -->
-                <div class="memory-card">
-                    <div class="card-header">
-                        <span class="user-name">Isabella Torres</span>
-                        <span class="date">Nov 29, 2025</span>
-                    </div>
-                    <div class="card-thumbnail">
-                        <div class="thumbnail-placeholder"></div>
-                    </div>
-                    <div class="card-content">
-                        <p class="memory-text">
-                            The first time I made churros for my children, I cried remembering my own childhood. The dusting of cinnamon sugar became our family's sweetest tradition.
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-
-                <!-- Memory Card 6 -->
-                <div class="memory-card">
-                    <div class="card-header">
-                        <span class="user-name">Antonio Lopez</span>
-                        <span class="date">Nov 28, 2025</span>
-                    </div>
-                    <div class="card-thumbnail">
-                        <div class="thumbnail-placeholder"></div>
-                    </div>
-                    <div class="card-content">
-                        <p class="memory-text">
-                            My wife's paella became the centerpiece of every family celebration. The saffron-scented rice carried the essence of our Spanish heritage across generations.
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
+                <!-- Memories will be loaded dynamically from localStorage -->
             </div>
         </section>
     </div>
@@ -222,6 +151,9 @@
             <div class="footer-info">
                 <p class="copyright">&copy; 2025 Sabor de Casa. All rights reserved.</p>
             </div>
+            <div class="footer-video">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="video-link">📹 Project Video</a>
+            </div>
             <div class="footer-timestamp">
                 <p class="last-updated">Last updated: <span id="lastUpdate">December 4, 2025</span></p>
             </div>
@@ -229,7 +161,5 @@
     </div>
 </footer>
 
-<script src="scripts/index.js"></script>
-<script src="scripts/share.js"></script>
 </body>
 </html>
