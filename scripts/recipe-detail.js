@@ -1,8 +1,5 @@
-﻿const THEMEALDB_BASE = 'https://www.themealdb.com/api/json/v1/1';
+﻿const RESTCOUNTRIES_BASE = 'https://restcountries.com/v3.1';
 
-const RESTCOUNTRIES_BASE = 'https://restcountries.com/v3.1';
-
-// TheMealDB "strArea" is not always a country name. Normalize the most common ones.
 function mapAreaToCountryQuery(area) {
     const normalized = String(area || '').trim();
     if (!normalized || normalized.toLowerCase() === 'unknown') return '';
@@ -348,7 +345,6 @@ function updateProgressIndicators(meal) {
     const totalStepsSpan = document.getElementById('totalSteps');
     if (totalStepsSpan) totalStepsSpan.textContent = String(stepsCount);
 
-    // Initial current step label is already in HTML (#currentStep)
     const currentStepSpan = document.getElementById('currentStep');
     if (currentStepSpan) currentStepSpan.textContent = stepsCount ? 'Step 1' : 'Step 0';
 }
