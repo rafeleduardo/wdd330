@@ -1,5 +1,140 @@
 ﻿const THEMEALDB_BASE = 'https://www.themealdb.com/api/json/v1/1';
 
+const RESTCOUNTRIES_BASE = 'https://restcountries.com/v3.1';
+
+// TheMealDB "strArea" is not always a country name. Normalize the most common ones.
+function mapAreaToCountryQuery(area) {
+    const normalized = String(area || '').trim();
+    if (!normalized || normalized.toLowerCase() === 'unknown') return '';
+    return AREA_TO_COUNTRY[normalized] || normalized;
+}
+
+const AREA_TO_COUNTRY = {
+    'Algerian': 'Algeria',
+    'American': 'United States',
+    'Argentinian': 'Argentina',
+    'Australian': 'Australia',
+    'British': 'United Kingdom',
+    'Canadian': 'Canada',
+    'Chinese': 'China',
+    'Croatian': 'Croatia',
+    'Dutch': 'Netherlands',
+    'Egyptian': 'Egypt',
+    'Filipino': 'Philippines',
+    'French': 'France',
+    'Greek': 'Greece',
+    'Indian': 'India',
+    'Irish': 'Ireland',
+    'Italian': 'Italy',
+    'Jamaican': 'Jamaica',
+    'Japanese': 'Japan',
+    'Kenyan': 'Kenya',
+    'Malaysian': 'Malaysia',
+    'Mexican': 'Mexico',
+    'Moroccan': 'Morocco',
+    'Norwegian': 'Norway',
+    'Polish': 'Poland',
+    'Portuguese': 'Portugal',
+    'Russian': 'Russia',
+    'Saudi Arabian': 'Saudi Arabia',
+    'Slovakian': 'Slovakia',
+    'Spanish': 'Spain',
+    'Syrian': 'Syria',
+    'Thai': 'Thailand',
+    'Tunisian': 'Tunisia',
+    'Turkish': 'Turkey',
+    'Ukrainian': 'Ukraine',
+    'Uruguayan': 'Uruguay',
+
+    // NOTE: TheMealDB has a typo: "Venezulan"
+    'Venezulan': 'Venezuela',
+
+    'Vietnamese': 'Vietnam'
+};
+
+async function fetchCountryByName(name) {
+    try {
+        const query = String(name || '').trim();
+        if (!query) return null;
+
+        // Required endpoint (no fields)
+        const url = `${RESTCOUNTRIES_BASE}/name/${encodeURIComponent(query)}`;
+
+        let res = await fetch(url);
+
+        // Fallback: sometimes "fullText" helps with exact matches
+        if (!res.ok) {
+            res = await fetch(`${url}?fullText=true`);
+        }
+
+        if (!res.ok) return null;
+
+        const data = await res.json();
+        if (!Array.isArray(data) || !data.length) return null;
+
+        return data[0];
+    } catch (err) {
+        console.error('Error fetching country:', err);
+        return null;
+    }
+}
+
+function formatCountryDetails(country) {
+    const capital = Array.isArray(country?.capital) ? country.capital[0] : '';
+    const region = country?.region || '';
+    const subregion = country?.subregion || '';
+
+    const languagesObj = country?.languages || {};
+    const languages = Object.values(languagesObj).filter(Boolean).slice(0, 3).join(', ');
+
+    const currenciesObj = country?.currencies || {};
+    const currencyCodes = Object.keys(currenciesObj);
+    const currency =
+        currencyCodes.length
+            ? `${currencyCodes[0]} (${currenciesObj[currencyCodes[0]]?.name || ''})`.trim()
+            : '';
+
+    const parts = [];
+    if (capital) parts.push(`Capital: ${capital}`);
+    if (region || subregion) parts.push(`Region: ${[subregion, region].filter(Boolean).join(', ')}`);
+    if (languages) parts.push(`Languages: ${languages}`);
+    if (currency) parts.push(`Currency: ${currency}`);
+
+    return parts.join(' • ');
+}
+
+function renderCountryCard(area, country) {
+    const card = document.getElementById('countryCard');
+    const flag = document.getElementById('countryFlag');
+    const name = document.getElementById('countryName');
+    const details = document.getElementById('countryDetails');
+
+    if (!card || !flag || !name || !details) return;
+
+    if (!country) {
+        card.hidden = true;
+        return;
+    }
+
+    const countryName = country?.name?.common || country?.name?.official || mapAreaToCountryQuery(area) || 'Country';
+    const flagUrl = country?.flags?.png || country?.flags?.svg || '';
+
+    name.textContent = `Origin: ${area || 'Unknown'} • ${countryName}`;
+    details.textContent = formatCountryDetails(country);
+
+    if (flagUrl) {
+        flag.src = flagUrl;
+        flag.alt = `${countryName} flag`;
+        flag.hidden = false;
+    } else {
+        flag.removeAttribute('src');
+        flag.alt = '';
+        flag.hidden = true;
+    }
+
+    card.hidden = false;
+}
+
 function getRecipeIdFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('id');
@@ -373,6 +508,12 @@ async function loadRecipeDetails() {
     renderIngredients(meal);
     renderSteps(meal);
     updateProgressIndicators(meal);
+
+    // NEW: Rest Countries enrichment
+    const area = meal?.strArea || '';
+    const countryQuery = mapAreaToCountryQuery(area);
+    const country = await fetchCountryByName(countryQuery);
+    renderCountryCard(area, country);
 
     initializeRecipeDetails();
     initializeModal();
