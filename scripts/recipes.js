@@ -1,11 +1,19 @@
-﻿function addRecipesPageHandlers() {
-    // Recipe search
+﻿function getSelectedFilters() {
+    const categorySelect = document.getElementById('categorySelect');
+    return {
+        category: categorySelect ? categorySelect.value : ''
+    };
+}
+
+function addRecipesPageHandlers() {
+    // Recipe search (by name via TheMealDB)
     const searchInput = document.getElementById('recipeSearch');
     const searchButton = document.querySelector('.search-button');
     if (searchInput && searchButton) {
         searchButton.addEventListener('click', performSearch);
-        searchInput.addEventListener('keypress', function(e) {
+        searchInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
+                e.preventDefault();
                 performSearch();
             }
         });
@@ -20,77 +28,79 @@
     if (clearFiltersButton) {
         clearFiltersButton.addEventListener('click', clearFilters);
     }
-}
 
-function performSearch() {
-    const searchInput = document.getElementById('recipeSearch');
-    const query = searchInput.value.toLowerCase().trim();
-    fetchRecipes().then(recipes => {
-        if (!query) {
-            renderRecipeCards(recipes);
-            showNotification('Showing all recipes');
-            return;
-        }
-        const filtered = recipes.filter(recipe =>
-            recipe.title.toLowerCase().includes(query) ||
-            recipe.description.toLowerCase().includes(query)
-        );
-        renderRecipeCards(filtered);
-        showNotification(`Found ${filtered.length} recipes matching "${query}"`);
-    });
-}
+    // Apply immediately when user changes category
+    const categorySelect = document.getElementById('categorySelect');
+    if (categorySelect) {
+        categorySelect.addEventListener('change', () => {
+            // Clear search to avoid mixed "search vs category" expectations
+            const recipeSearch = document.getElementById('recipeSearch');
+            if (recipeSearch) recipeSearch.value = '';
 
-async function getFilterOptions() {
-    const recipes = await fetchRecipes();
-    const categories = [...new Set(recipes.map(r => r.category))];
-    const cuisines = [...new Set(recipes.map(r => r.cuisine))];
-    const difficulties = [...new Set(recipes.map(r => r.difficulty))];
-    const times = [...new Set(recipes.map(r => r.time))];
-    return { categories, cuisines, difficulties, times };
-}
-
-function getSelectedFilters() {
-    const selected = {
-        category: [],
-        cuisine: [],
-        difficulty: [],
-        time: []
-    };
-    document.querySelectorAll('.filter-group').forEach(group => {
-        const label = group.querySelector('.filter-label').textContent.trim().toLowerCase();
-        group.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
-            if (label.includes('category')) selected.category.push(cb.value);
-            else if (label.includes('cuisine')) selected.cuisine.push(cb.value);
-            else if (label.includes('difficulty')) selected.difficulty.push(cb.value);
-            else if (label.includes('cooking time')) selected.time.push(cb.value);
+            applyFilters();
         });
-    });
-    return selected;
+    }
 }
+
+// Searches TheMealDB by recipe name:
+// https://www.themealdb.com/api/json/v1/1/search.php?s=<name>
+async function performSearch() {
+    const searchInput = document.getElementById('recipeSearch');
+    const rawQuery = (searchInput?.value || '').trim();
+
+    if (!rawQuery) {
+        // If user cleared search, go back to category mode (or empty state)
+        applyFilters();
+        return;
+    }
+
+    const meals = await fetchMealsBySearch(rawQuery);
+
+    renderRecipeCards(meals);
+
+    const countEl = document.getElementById('recipeCount');
+    if (countEl) {
+        countEl.textContent = `${meals.length} recipes matching "${rawQuery}"`;
+    }
+
+    if (meals.length === 0) {
+        showNotification(`No recipes found for "${rawQuery}"`, 'info');
+    } else {
+        showNotification(`Found ${meals.length} recipes`, 'success');
+    }
+}
+
 
 async function applyFilters() {
-    const recipes = await fetchRecipes();
     const filters = getSelectedFilters();
-    let filtered = recipes.filter(recipe => {
-        const matchCategory = filters.category.length === 0 || filters.category.includes(recipe.category);
-        const matchCuisine = filters.cuisine.length === 0 || filters.cuisine.includes(recipe.cuisine);
-        const matchDifficulty = filters.difficulty.length === 0 || filters.difficulty.includes(recipe.difficulty);
-        const matchTime = filters.time.length === 0 || filters.time.includes(recipe.time);
-        return matchCategory && matchCuisine && matchDifficulty && matchTime;
-    });
-    renderRecipeCards(filtered);
-    showNotification(`Applied filters: ${filtered.length} recipes found`);
+
+    if (!filters.category) {
+        // No category selected -> choose first available category if present
+        const categorySelect = document.getElementById('categorySelect');
+        const firstRealOption = categorySelect && categorySelect.querySelector('option[value]:not([value=""])');
+        if (firstRealOption) {
+            categorySelect.value = firstRealOption.value;
+            return applyFilters();
+        }
+
+        showNotification('Please select a category.', 'info');
+        renderRecipeCards([]);
+        updateRecipeCount(0, '');
+        return;
+    }
+
+    const meals = await fetchMealsByCategory(filters.category);
+    renderRecipeCards(meals);
+    updateRecipeCount(meals.length, filters.category);
+    showNotification(`Category: ${filters.category} (${meals.length} recipes)`, 'success');
 }
 
 function clearFilters() {
-    const checkboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = false;
-    });
-    fetchRecipes().then(recipes => {
-        renderRecipeCards(recipes);
-        showNotification('All filters cleared');
-    });
+    const categorySelect = document.getElementById('categorySelect');
+    if (categorySelect) categorySelect.value = '';
+    renderRecipeCards([]);
+    updateRecipeCount(0, '');
+    showNotification('Filters cleared. Select a category to view recipes.');
 }
 
 function showNotification(message, type = 'info') {
@@ -129,20 +139,62 @@ function showNotification(message, type = 'info') {
     }, 4000);
 }
 
-async function fetchRecipes() {
+const THEMEALDB_BASE = 'https://www.themealdb.com/api/json/v1/1';
+
+async function fetchCategories() {
     try {
-        const res = await fetch('data/recipes.json');
+        const res = await fetch(`${THEMEALDB_BASE}/list.php?c=list`);
         if (!res.ok) return [];
-        return await res.json();
+        const data = await res.json();
+        const meals = Array.isArray(data.meals) ? data.meals : [];
+        return meals
+            .map(m => m.strCategory)
+            .filter(Boolean)
+            .sort((a, b) => a.localeCompare(b));
     } catch (err) {
-        console.error('Error loading recipes:', err);
+        console.error('Error loading categories:', err);
         return [];
     }
 }
 
-function renderRecipeCards(recipes) {
-    const grid = document.getElementById('recipeGrid');
+async function fetchMealsByCategory(category) {
+    try {
+        const res = await fetch(`${THEMEALDB_BASE}/filter.php?c=${encodeURIComponent(category)}`);
+        if (!res.ok) return [];
+        const data = await res.json();
+        return Array.isArray(data.meals) ? data.meals : [];
+    } catch (err) {
+        console.error('Error loading meals by category:', err);
+        return [];
+    }
+}
+
+async function fetchMealsBySearch(query) {
+    try {
+        const res = await fetch(`${THEMEALDB_BASE}/search.php?s=${encodeURIComponent(query)}`);
+        if (!res.ok) return [];
+        const data = await res.json();
+        return Array.isArray(data.meals) ? data.meals : [];
+    } catch (err) {
+        console.error('Error searching meals:', err);
+        return [];
+    }
+}
+
+function updateRecipeCount(shownCount, categoryName = '') {
     const countEl = document.getElementById('recipeCount');
+    if (!countEl) return;
+
+    if (!categoryName) {
+        countEl.textContent = 'Select a category to view recipes.';
+        return;
+    }
+
+    countEl.textContent = `${shownCount} recipes in ${categoryName}`;
+}
+
+function renderRecipeCards(meals) {
+    const grid = document.getElementById('recipeGrid');
     if (!grid) return;
 
     const skeletons = grid.querySelectorAll('.skeleton-card');
@@ -151,71 +203,58 @@ function renderRecipeCards(recipes) {
     const existingCards = grid.querySelectorAll('.recipe-card');
     existingCards.forEach(card => card.remove());
 
-    fetchRecipes().then(allRecipes => {
-        if (countEl) {
-            countEl.textContent = `${recipes.length} of ${allRecipes.length} recipes`;
-        }
-    });
-    recipes.forEach(recipe => {
+    meals.forEach(meal => {
         const card = document.createElement('div');
         card.className = 'recipe-card';
-        card.setAttribute('data-category', recipe.category);
-        card.setAttribute('data-cuisine', recipe.cuisine);
-        card.setAttribute('data-difficulty', recipe.difficulty);
-        card.setAttribute('data-time', recipe.time);
 
-        // Generate responsive image HTML
-        const imageHTML = recipe.image
+        const title = meal.strMeal || 'Recipe';
+        const thumb = meal.strMealThumb || '';
+
+        const imageHTML = thumb
             ? `<img 
-                srcset="
-                    images/recipes/${recipe.image}-400.webp 400w,
-                    images/recipes/${recipe.image}-800.webp 800w,
-                    images/recipes/${recipe.image}-1200.webp 1200w
-                "
-                sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
-                src="images/recipes/${recipe.image}-800.webp"
-                alt="${recipe.title}"
+                src="${thumb}"
+                alt="${title}"
                 width="800"
                 height="600"
                 loading="lazy"
                 class="recipe-image"
               >`
-            : `<div class="thumbnail-placeholder">${recipe.title}</div>`;
+            : `<div class="thumbnail-placeholder">${title}</div>`;
+
+        // Note: MealDB filter response provides idMeal, strMeal, strMealThumb
+        const id = meal.idMeal;
 
         card.innerHTML = `
             <div class="recipe-thumbnail">
                 ${imageHTML}
             </div>
             <div class="recipe-content">
-                <h3 class="recipe-title">${recipe.title}</h3>
-                <p class="recipe-description">${recipe.description}</p>
-                <div class="recipe-meta">
-                    <span class="recipe-author">By ${recipe.author}</span>
-                    <span class="recipe-views">${recipe.views} views</span>
-                    <span class="recipe-likes">&#10084; ${recipe.likes}</span>
-                </div>
-                <div class="recipe-tags">
-                    ${recipe.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}
-                </div>
-                <a href="recipe-detail.html?id=${recipe.id}" class="view-details">View Details</a>
+                <h3 class="recipe-title">${title}</h3>
+                <p class="recipe-description">Recipe details available on the next page.</p>
+                <a href="recipe-detail.html?id=${id}" class="view-details">View Details</a>
             </div>
         `;
         grid.appendChild(card);
     });
 }
 
-async function renderCuisineFilters() {
-    const { cuisines } = await getFilterOptions();
-    const container = document.getElementById('cuisine-filter-options');
-    if (!container) return;
-    container.innerHTML = '';
-    cuisines.forEach(cuisine => {
-        const label = cuisine.charAt(0).toUpperCase() + cuisine.slice(1);
-        const el = document.createElement('label');
-        el.className = 'filter-option';
-        el.innerHTML = `<input type="checkbox" value="${cuisine}"><span>${label}</span>`;
-        container.appendChild(el);
-    });
+async function renderCategoryDropdown() {
+    const select = document.getElementById('categorySelect');
+    if (!select) return;
+
+    select.innerHTML = '';
+
+    const categories = await fetchCategories();
+
+    if (categories.length === 0) {
+        select.innerHTML = `<option value="">Unable to load categories</option>`;
+        return;
+    }
+
+    select.innerHTML = `
+        <option value="">Select a category...</option>
+        ${categories.map(c => `<option value="${c}">${c}</option>`).join('')}
+    `;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -230,7 +269,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     addRecipesPageHandlers();
-    await renderCuisineFilters();
-    const recipes = await fetchRecipes();
-    renderRecipeCards(recipes);
+    await renderCategoryDropdown();
+
+    renderRecipeCards([]);
+    updateRecipeCount(0, '');
 });
