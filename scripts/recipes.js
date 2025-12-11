@@ -1,15 +1,4 @@
 ﻿function addRecipesPageHandlers() {
-    // Layout controls
-    const layoutButtons = document.querySelectorAll('.layout-button');
-    layoutButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const layout = this.dataset.layout;
-            switchLayout(layout);
-            layoutButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-
     // Recipe search
     const searchInput = document.getElementById('recipeSearch');
     const searchButton = document.querySelector('.search-button');
@@ -33,17 +22,6 @@
     }
 }
 
-function switchLayout(layout) {
-    const recipeGrid = document.getElementById('recipeGrid');
-    if (!recipeGrid) return;
-    if (layout === 'list') {
-        recipeGrid.classList.add('list-layout');
-    } else {
-        recipeGrid.classList.remove('list-layout');
-    }
-    showNotification(`Switched to ${layout} view`);
-}
-
 function performSearch() {
     const searchInput = document.getElementById('recipeSearch');
     const query = searchInput.value.toLowerCase().trim();
@@ -59,13 +37,6 @@ function performSearch() {
         );
         renderRecipeCards(filtered);
         showNotification(`Found ${filtered.length} recipes matching "${query}"`);
-    });
-}
-
-function showAllRecipes() {
-    const recipeCards = document.querySelectorAll('.recipe-card');
-    recipeCards.forEach(card => {
-        card.style.display = 'block';
     });
 }
 

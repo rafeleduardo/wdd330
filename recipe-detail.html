@@ -51,6 +51,17 @@
     <div class="header-divider"></div>
 </header>
 
+<!-- Breadcrumb Navigation -->
+<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="recipes.html">Recipes</a></li>
+            <li class="breadcrumb-item active" id="breadcrumbRecipeName" aria-current="page">Loading...</li>
+        </ol>
+    </div>
+</nav>
+
 <!-- Progress Indicator -->
 <div class="progress-bar-container">
     <div class="container">
@@ -69,12 +80,10 @@
         <!-- Recipe Header -->
         <section class="recipe-header">
             <div class="recipe-title-section">
-                <h1 class="recipe-main-title">Traditional Empanadas</h1>
-                <p class="recipe-author">By Maria Rodriguez</p>
+                <h1 class="recipe-main-title">Loading...</h1>
+                <p class="recipe-author">By...</p>
                 <div class="recipe-stats">
-                    <span class="stat-item">⏱ 45 min total</span>
-                    <span class="stat-item">👥 Serves 6</span>
-                    <span class="stat-item">📊 Medium difficulty</span>
+                    <!-- Stats will be loaded dynamically -->
                 </div>
             </div>
         </section>
@@ -93,59 +102,14 @@
                 <!-- Cultural Context -->
                 <div class="cultural-context">
                     <h3>Cultural Story</h3>
-                    <p>
-                        Empanadas have been part of Latin American cuisine for centuries, with each region developing its own unique variations. These savory pastries were originally brought to the Americas by Spanish colonizers, but quickly adapted to local ingredients and tastes. In Argentina, empanadas are considered a national dish, while in Colombia they're often served during Christmas celebrations.
-                    </p>
+                    <p>Loading cultural context...</p>
                 </div>
 
                 <!-- Ingredients -->
                 <div class="ingredients-section">
                     <h3>Ingredients</h3>
                     <ul class="ingredients-list">
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient1" class="ingredient-checkbox">
-                            <label for="ingredient1">2 cups all-purpose flour</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient2" class="ingredient-checkbox">
-                            <label for="ingredient2">1/2 tsp salt</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient3" class="ingredient-checkbox">
-                            <label for="ingredient3">1/2 cup cold butter, diced</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient4" class="ingredient-checkbox">
-                            <label for="ingredient4">1 egg</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient5" class="ingredient-checkbox">
-                            <label for="ingredient5">1/4 cup cold water</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient6" class="ingredient-checkbox">
-                            <label for="ingredient6">1 lb ground beef</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient7" class="ingredient-checkbox">
-                            <label for="ingredient7">1 onion, diced</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient8" class="ingredient-checkbox">
-                            <label for="ingredient8">2 hard-boiled eggs, chopped</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient9" class="ingredient-checkbox">
-                            <label for="ingredient9">1 tsp cumin</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient10" class="ingredient-checkbox">
-                            <label for="ingredient10">1 tsp paprika</label>
-                        </li>
-                        <li class="ingredient-item">
-                            <input type="checkbox" id="ingredient11" class="ingredient-checkbox">
-                            <label for="ingredient11">Salt and pepper to taste</label>
-                        </li>
+                        <!-- Ingredients will be loaded dynamically -->
                     </ul>
                 </div>
             </div>
@@ -155,131 +119,7 @@
                 <!-- Step Instructions -->
                 <div class="instructions-section">
                     <h3>Cooking Instructions</h3>
-
-                    <!-- Step 1 -->
-                    <div class="step-item active" data-step="1">
-                        <div class="step-header">
-                            <input type="checkbox" id="step1" class="step-checkbox">
-                            <label for="step1" class="step-number">Step 1</label>
-                            <span class="step-time">15 min</span>
-                        </div>
-                        <div class="step-content">
-                            <p class="step-text">
-                                Prepare the dough by mixing flour and salt in a large bowl. Cut in the cold butter using a pastry cutter or your fingertips until the mixture resembles coarse crumbs.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="step-item" data-step="2">
-                        <div class="step-header">
-                            <input type="checkbox" id="step2" class="step-checkbox">
-                            <label for="step2" class="step-number">Step 2</label>
-                            <span class="step-time">5 min</span>
-                        </div>
-                        <div class="step-content">
-                            <p class="step-text">
-                                Beat the egg and mix it with cold water. Gradually add this to the flour mixture, stirring until a dough forms. Knead gently on a floured surface until smooth.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="step-item" data-step="3">
-                        <div class="step-header">
-                            <input type="checkbox" id="step3" class="step-checkbox">
-                            <label for="step3" class="step-number">Step 3</label>
-                            <span class="step-time">60 min</span>
-                        </div>
-                        <div class="step-content">
-                            <p class="step-text">
-                                Wrap the dough in plastic wrap and refrigerate for at least 1 hour. This resting period allows the gluten to relax and makes the dough easier to work with.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="step-item" data-step="4">
-                        <div class="step-header">
-                            <input type="checkbox" id="step4" class="step-checkbox">
-                            <label for="step4" class="step-number">Step 4</label>
-                            <span class="step-time">10 min</span>
-                        </div>
-                        <div class="step-content">
-                            <p class="step-text">
-                                While the dough rests, prepare the filling. Brown the ground beef in a large skillet over medium heat, breaking it up with a spoon as it cooks.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="step-item" data-step="5">
-                        <div class="step-header">
-                            <input type="checkbox" id="step5" class="step-checkbox">
-                            <label for="step5" class="step-number">Step 5</label>
-                            <span class="step-time">8 min</span>
-                        </div>
-                        <div class="step-content">
-                            <p class="step-text">
-                                Add the diced onion to the beef and cook until translucent. Season with cumin, paprika, salt, and pepper. Stir in the chopped hard-boiled eggs and remove from heat.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 6 -->
-                    <div class="step-item" data-step="6">
-                        <div class="step-header">
-                            <input type="checkbox" id="step6" class="step-checkbox">
-                            <label for="step6" class="step-number">Step 6</label>
-                            <span class="step-time">15 min</span>
-                        </div>
-                        <div class="step-content">
-                            <p class="step-text">
-                                Preheat oven to 375°F (190°C). Roll out the dough on a floured surface to about 1/8 inch thickness. Cut into 4-inch circles using a cookie cutter or bowl.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 7 -->
-                    <div class="step-item" data-step="7">
-                        <div class="step-header">
-                            <input type="checkbox" id="step7" class="step-checkbox">
-                            <label for="step7" class="step-number">Step 7</label>
-                            <span class="step-time">10 min</span>
-                        </div>
-                        <div class="step-content">
-                            <p class="step-text">
-                                Place a spoonful of filling in the center of each circle. Fold the dough over to create a half-moon shape and press the edges together. Crimp with a fork to seal.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 8 -->
-                    <div class="step-item" data-step="8">
-                        <div class="step-header">
-                            <input type="checkbox" id="step8" class="step-checkbox">
-                            <label for="step8" class="step-number">Step 8</label>
-                            <span class="step-time">20 min</span>
-                        </div>
-                        <div class="step-content">
-                            <p class="step-text">
-                                Place empanadas on a baking sheet lined with parchment paper. Brush with beaten egg for a golden finish. Bake for 18-20 minutes until golden brown. Let cool slightly before serving.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation Controls -->
-                <div class="step-navigation">
-                    <button class="nav-button previous-button" id="prevButton" disabled>
-                        ← Previous Step
-                    </button>
-                    <div class="step-indicator">
-                        <span id="stepIndicator">Step 1 of 8</span>
-                    </div>
-                    <button class="nav-button next-button" id="nextButton">
-                        Next Step →
-                    </button>
+                    <!-- Steps will be loaded dynamically -->
                 </div>
             </div>
         </div>
@@ -294,7 +134,7 @@
                 <p class="copyright">&copy; 2025 Sabor de Casa. All rights reserved.</p>
             </div>
             <div class="footer-video">
-                <a href="#" target="_blank" rel="noopener noreferrer" class="video-link">📹 Project Video</a>
+                <a href="https://youtu.be/ksEAFK8Sp0c" target="_blank" rel="noopener noreferrer" class="video-link">📹 Project Video</a>
             </div>
             <div class="footer-timestamp">
                 <p class="last-updated">Last updated: <span id="lastUpdate">December 4, 2025</span></p>
@@ -302,6 +142,27 @@
         </div>
     </div>
 </footer>
+
+<!-- Completion Modal -->
+<div class="modal-overlay" id="completionModal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription" aria-hidden="true">
+    <div class="modal-container">
+        <button class="modal-close" id="modalClose" aria-label="Close modal">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-content">
+            <div class="modal-icon">🎉</div>
+            <h2 class="modal-title" id="modalTitle">Congratulations!</h2>
+            <p class="modal-description" id="modalDescription">
+                You've completed all the steps for this recipe! We hope it turns out delicious.
+            </p>
+            <div class="modal-actions">
+                <button class="modal-button primary" id="shareRecipeBtn">Share Your Results</button>
+                <a href="recipes.html" class="modal-button secondary">Browse More Recipes</a>
+                <button class="modal-button tertiary" id="closeModalBtn">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

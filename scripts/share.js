@@ -1,9 +1,7 @@
 ﻿// Lógica exclusiva para share.html
 
-// LocalStorage key for memories
 const MEMORIES_STORAGE_KEY = 'saborDeCasaMemories';
 
-// Get memories from localStorage
 function getMemoriesFromStorage() {
     try {
         const memories = localStorage.getItem(MEMORIES_STORAGE_KEY);
@@ -14,7 +12,6 @@ function getMemoriesFromStorage() {
     }
 }
 
-// Save memories to localStorage
 function saveMemoriesToStorage(memories) {
     try {
         localStorage.setItem(MEMORIES_STORAGE_KEY, JSON.stringify(memories));
@@ -25,7 +22,6 @@ function saveMemoriesToStorage(memories) {
     }
 }
 
-// Add a new memory
 function addMemory(memoryData) {
     const memories = getMemoriesFromStorage();
     const newMemory = {
@@ -43,29 +39,25 @@ function addMemory(memoryData) {
         timestamp: Date.now()
     };
 
-    memories.unshift(newMemory); // Add to beginning
+    memories.unshift(newMemory);
     return saveMemoriesToStorage(memories);
 }
 
-// Escape HTML to prevent XSS
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
 }
 
-// Render user memories dynamically
 function renderUserMemories() {
     const grid = document.getElementById('masonryGrid');
     if (!grid) return;
 
     const memories = getMemoriesFromStorage();
 
-    // Always clear grid
     grid.innerHTML = '';
 
     if (memories.length === 0) {
-        // Show empty state message
         grid.innerHTML = `
             <div class="empty-state">
                 <p class="empty-state-message">No memories shared yet. Be the first to share your culinary story!</p>
@@ -74,7 +66,6 @@ function renderUserMemories() {
         return;
     }
 
-    // Render user memories without images
     memories.forEach(memory => {
         const card = document.createElement('div');
         card.className = 'memory-card';
@@ -92,11 +83,9 @@ function renderUserMemories() {
         grid.appendChild(card);
     });
 
-    // Add event listeners to new read-more links
     attachReadMoreListeners();
 }
 
-// Attach event listeners to read-more links
 function attachReadMoreListeners() {
     const readMoreLinks = document.querySelectorAll('.read-more');
     readMoreLinks.forEach(link => {
@@ -114,7 +103,6 @@ function attachReadMoreListeners() {
     });
 }
 
-// Show memory detail
 function showMemoryDetail(memoryId) {
     const memories = getMemoriesFromStorage();
     const memory = memories.find(m => m.id === memoryId);
@@ -126,13 +114,10 @@ function showMemoryDetail(memoryId) {
 }
 
 function addSharePageHandlers() {
-    // Load and render user memories
     renderUserMemories();
 
-    // Masonry layout para memories
     initializeMasonryLayout();
 
-    // Formulario de compartir
     const shareForm = document.getElementById('shareForm');
     if (shareForm) {
         shareForm.addEventListener('submit', function(e) {
@@ -149,12 +134,10 @@ function addSharePageHandlers() {
         }
     }
 
-    // Attach read-more listeners to existing cards
     attachReadMoreListeners();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Update footer date
     if (typeof updateFooterDate === 'function') {
         updateFooterDate();
     }
@@ -183,7 +166,6 @@ function handleFormSubmission() {
     const requiredFields = ['name', 'recipe', 'memory', 'category'];
     let isValid = true;
 
-    // Reset border colors
     requiredFields.forEach(field => {
         const input = document.getElementById(field);
         if (input) {
@@ -191,7 +173,6 @@ function handleFormSubmission() {
         }
     });
 
-    // Validate required fields
     requiredFields.forEach(field => {
         const input = document.getElementById(field);
         if (input && (!formData.get(field) || formData.get(field).trim() === '')) {
@@ -210,9 +191,7 @@ function handleFormSubmission() {
     submitButton.textContent = 'Sharing...';
     submitButton.disabled = true;
 
-    // Simulate saving delay
     setTimeout(() => {
-        // Save memory to localStorage
         const memoryData = {
             name: formData.get('name').trim(),
             recipe: formData.get('recipe').trim(),
@@ -224,10 +203,8 @@ function handleFormSubmission() {
         const saved = addMemory(memoryData);
 
         if (saved) {
-            // Store data in sessionStorage for thank-you page
             sessionStorage.setItem('lastSharedMemory', JSON.stringify(memoryData));
 
-            // Redirect to thank you page
             window.location.href = 'thank-you.html';
         } else {
             showNotification('Error saving your memory. Please try again.', 'error');

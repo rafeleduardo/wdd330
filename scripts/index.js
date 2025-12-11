@@ -7,7 +7,6 @@
     }
 }
 
-// Hamburger menu toggle
 function initHamburgerMenu() {
     const hamburger = document.getElementById('hamburgerMenu');
     const navigation = document.getElementById('navigation');
@@ -43,42 +42,6 @@ function initHamburgerMenu() {
             closeMenu();
         }
     });
-}
-
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    const backgroundColor = type === 'error' ? '#ff4444' : type === 'success' ? '#44aa44' : '#333';
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: ${backgroundColor};
-        color: white;
-        padding: 12px 20px;
-        border-radius: 4px;
-        font-size: 14px;
-        z-index: 1000;
-        opacity: 0;
-        transform: translateX(100%);
-        transition: all 0.3s ease;
-        font-family: Helvetica, Arial, sans-serif;
-        max-width: 300px;
-        line-height: 1.4;
-    `;
-    document.body.appendChild(notification);
-    setTimeout(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 4000);
 }
 
 async function fetchRecipes() {

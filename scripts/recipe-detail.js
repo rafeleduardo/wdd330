@@ -1,12 +1,8 @@
-﻿// Lógica exclusiva para recipe-detail.html
-
-// Get recipe ID from URL parameter
-function getRecipeIdFromURL() {
+﻿function getRecipeIdFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('id');
 }
 
-// Fetch recipe data from JSON
 async function fetchRecipeById(id) {
     try {
         const response = await fetch('data/recipes.json');
@@ -21,32 +17,40 @@ async function fetchRecipeById(id) {
     }
 }
 
-// Render recipe header (title, author, stats)
+function updateBreadcrumb(recipe) {
+    const breadcrumbRecipeName = document.getElementById('breadcrumbRecipeName');
+    if (breadcrumbRecipeName) {
+        breadcrumbRecipeName.textContent = recipe.title || 'Recipe';
+    }
+}
+
 function renderRecipeHeader(recipe) {
     const titleElement = document.querySelector('.recipe-main-title');
     const authorElement = document.querySelector('.recipe-author');
     const statsElement = document.querySelector('.recipe-stats');
 
-    if (titleElement) titleElement.textContent = recipe.title;
-    if (authorElement) authorElement.textContent = `By ${recipe.author}`;
+    if (titleElement) titleElement.textContent = recipe.title || 'Recipe';
+    if (authorElement) authorElement.textContent = `By ${recipe.author || 'Unknown'}`;
 
     if (statsElement) {
+        const totalTime = recipe.totalTime || recipe.prepTime || '45 min';
+        const servings = recipe.servings || '6';
+        const difficulty = recipe.difficulty || 'medium';
+
         statsElement.innerHTML = `
-            <span class="stat-item">⏱ ${recipe.totalTime}</span>
-            <span class="stat-item">👥 Serves ${recipe.servings}</span>
-            <span class="stat-item">📊 ${recipe.difficulty.charAt(0).toUpperCase() + recipe.difficulty.slice(1)} difficulty</span>
+            <span class="stat-item">⏱ ${totalTime}</span>
+            <span class="stat-item">👥 Serves ${servings}</span>
+            <span class="stat-item">📊 ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)} difficulty</span>
         `;
     }
 }
 
-// Render recipe image
 function renderRecipeImage(recipe) {
     const photoSection = document.querySelector('.recipe-photo-section');
     if (!photoSection) return;
 
     const placeholder = photoSection.querySelector('.recipe-photo-placeholder');
     if (placeholder && recipe.image) {
-        // Replace placeholder with responsive image
         const img = document.createElement('img');
         img.srcset = `
             images/recipes/${recipe.image}-400.webp 400w,
@@ -57,13 +61,12 @@ function renderRecipeImage(recipe) {
         img.src = `images/recipes/${recipe.image}-1200.webp`;
         img.alt = recipe.title;
         img.className = 'recipe-photo';
-        img.loading = 'eager'; // Load immediately on detail page
+        img.loading = 'eager';
 
         placeholder.replaceWith(img);
     }
 }
 
-// Render cultural context
 function renderCulturalContext(recipe) {
     const culturalSection = document.querySelector('.cultural-context');
     if (culturalSection && recipe.culturalContext) {
@@ -74,99 +77,104 @@ function renderCulturalContext(recipe) {
     }
 }
 
-// Render ingredients list
 function renderIngredients(recipe) {
     const ingredientsList = document.querySelector('.ingredients-list');
-    if (!ingredientsList || !recipe.detailedIngredients) return;
+    if (!ingredientsList) return;
+
+    const ingredients = recipe.detailedIngredients || recipe.ingredients;
+    if (!ingredients || !Array.isArray(ingredients)) return;
 
     ingredientsList.innerHTML = '';
-    recipe.detailedIngredients.forEach((ingredient, index) => {
+    ingredients.forEach((ingredient, index) => {
         const li = document.createElement('li');
         li.className = 'ingredient-item';
+
+        const ingredientText = typeof ingredient === 'string'
+            ? ingredient
+            : `${ingredient.amount || ''} ${ingredient.name || ingredient}`.trim();
+
         li.innerHTML = `
             <input type="checkbox" id="ingredient${index + 1}" class="ingredient-checkbox">
-            <label for="ingredient${index + 1}">${ingredient.amount} ${ingredient.name}</label>
+            <label for="ingredient${index + 1}">${ingredientText}</label>
         `;
         ingredientsList.appendChild(li);
     });
 }
 
-// Render cooking steps
 function renderSteps(recipe) {
     const instructionsSection = document.querySelector('.instructions-section');
-    if (!instructionsSection || !recipe.steps) return;
+    if (!instructionsSection) return;
 
-    // Clear existing steps except the heading
+    const steps = recipe.steps || recipe.instructions;
+    if (!steps || !Array.isArray(steps)) return;
+
     const heading = instructionsSection.querySelector('h3');
     instructionsSection.innerHTML = '';
     if (heading) {
         instructionsSection.appendChild(heading);
     }
 
-    recipe.steps.forEach((step, index) => {
+    steps.forEach((step, index) => {
         const stepDiv = document.createElement('div');
         stepDiv.className = `step-item${index === 0 ? ' active' : ''}`;
-        stepDiv.setAttribute('data-step', step.step);
+        const stepNumber = index + 1;
+        stepDiv.setAttribute('data-step', stepNumber);
+
+        const stepText = typeof step === 'string' ? step : step.description || step.text || step;
+        const stepTime = typeof step === 'object' ? (step.time || '10 min') : '10 min';
+
         stepDiv.innerHTML = `
             <div class="step-header">
-                <input type="checkbox" id="step${step.step}" class="step-checkbox">
-                <label for="step${step.step}" class="step-number">Step ${step.step}</label>
-                <span class="step-time">${step.time}</span>
+                <input type="checkbox" id="step${stepNumber}" class="step-checkbox">
+                <label for="step${stepNumber}" class="step-number">Step ${stepNumber}</label>
+                <span class="step-time">${stepTime}</span>
             </div>
             <div class="step-content">
-                <p class="step-text">${step.description}</p>
+                <p class="step-text">${stepText}</p>
             </div>
         `;
         instructionsSection.appendChild(stepDiv);
     });
 }
 
-// Update progress indicators
 function updateProgressIndicators(recipe) {
+    const steps = recipe.steps || recipe.instructions || [];
+    const totalSteps = Array.isArray(steps) ? steps.length : 0;
+
     const totalStepsSpan = document.getElementById('totalSteps');
-    if (totalStepsSpan && recipe.steps) {
-        totalStepsSpan.textContent = recipe.steps.length;
+    if (totalStepsSpan) {
+        totalStepsSpan.textContent = totalSteps;
     }
 
     const stepIndicator = document.getElementById('stepIndicator');
-    if (stepIndicator && recipe.steps) {
-        stepIndicator.textContent = `Step 1 of ${recipe.steps.length}`;
+    if (stepIndicator) {
+        stepIndicator.textContent = `Step 1 of ${totalSteps}`;
     }
 }
 
-// Initialize all interactive features
 function initializeRecipeDetails() {
     const stepCheckboxes = document.querySelectorAll('.step-checkbox');
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
     const progressFill = document.getElementById('progressFill');
     const currentStepSpan = document.getElementById('currentStep');
-    const stepIndicator = document.getElementById('stepIndicator');
 
     if (!stepCheckboxes.length) return;
 
-    let currentStepIndex = 0;
     const totalSteps = stepCheckboxes.length;
 
     updateProgress();
 
-    // Step checkbox handlers
     stepCheckboxes.forEach((checkbox, index) => {
         checkbox.addEventListener('change', function() {
             const stepItem = this.closest('.step-item');
             if (this.checked) {
                 stepItem.classList.add('completed');
-                stepItem.classList.remove('active');
-                if (index < totalSteps - 1) {
-                    setTimeout(() => {
-                        currentStepIndex = index + 1;
-                        updateActiveStep();
-                        updateProgress();
-                    }, 500);
-                } else {
-                    setTimeout(() => {
-                        showNotification('🎉 Congratulations! You\'ve completed the recipe!', 'success');
-                    }, 500);
+                if (index === totalSteps - 1) {
+                    const allCompleted = document.querySelectorAll('.step-checkbox:checked').length === totalSteps;
+                    if (allCompleted) {
+                        setTimeout(() => {
+                            openModal();
+                        }, 500);
+                    }
                 }
             } else {
                 stepItem.classList.remove('completed');
@@ -174,47 +182,6 @@ function initializeRecipeDetails() {
             updateProgress();
         });
     });
-
-    // Previous button
-    if (prevButton) {
-        prevButton.addEventListener('click', function() {
-            if (currentStepIndex > 0) {
-                currentStepIndex--;
-                updateActiveStep();
-                updateProgress();
-            }
-        });
-    }
-
-    // Next button
-    if (nextButton) {
-        nextButton.addEventListener('click', function() {
-            if (currentStepIndex < totalSteps - 1) {
-                currentStepIndex++;
-                updateActiveStep();
-                updateProgress();
-            }
-        });
-    }
-
-    function updateActiveStep() {
-        const stepItems = document.querySelectorAll('.step-item');
-        stepItems.forEach((item, index) => {
-            item.classList.remove('active');
-            if (index === currentStepIndex) {
-                item.classList.add('active');
-                // Scroll to active step
-                item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        });
-
-        prevButton.disabled = currentStepIndex === 0;
-        nextButton.disabled = currentStepIndex === totalSteps - 1;
-
-        if (stepIndicator) {
-            stepIndicator.textContent = `Step ${currentStepIndex + 1} of ${totalSteps}`;
-        }
-    }
 
     function updateProgress() {
         const completedSteps = document.querySelectorAll('.step-checkbox:checked').length;
@@ -224,17 +191,18 @@ function initializeRecipeDetails() {
             progressFill.style.width = `${progressPercentage}%`;
         }
 
+        const currentDisplayStep = Math.min(completedSteps + 1, totalSteps);
+
         if (currentStepSpan) {
-            currentStepSpan.textContent = `Step ${completedSteps + 1}`;
+            currentStepSpan.textContent = `Step ${currentDisplayStep}`;
         }
 
         const progressText = document.querySelector('.progress-text');
         if (progressText) {
-            progressText.innerHTML = `<span id="currentStep">Step ${completedSteps + 1}</span> of <span id="totalSteps">${totalSteps}</span>`;
+            progressText.innerHTML = `<span id="currentStep">Step ${currentDisplayStep}</span> of <span id="totalSteps">${totalSteps}</span>`;
         }
     }
 
-    // Ingredient checkbox handlers
     const ingredientCheckboxes = document.querySelectorAll('.ingredient-checkbox');
     ingredientCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
@@ -247,7 +215,70 @@ function initializeRecipeDetails() {
     });
 }
 
-// Main initialization function
+function openModal() {
+    const modal = document.getElementById('completionModal');
+    if (modal) {
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+
+        const focusableElements = modal.querySelectorAll('button, a');
+        const firstElement = focusableElements[0];
+
+        if (firstElement) {
+            firstElement.focus();
+        }
+
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('completionModal');
+    if (modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+
+        document.body.style.overflow = '';
+    }
+}
+
+function initializeModal() {
+    const modal = document.getElementById('completionModal');
+    const closeBtn = document.getElementById('modalClose');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const shareRecipeBtn = document.getElementById('shareRecipeBtn');
+    const overlay = modal;
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+
+    if (shareRecipeBtn) {
+        shareRecipeBtn.addEventListener('click', () => {
+            closeModal();
+            window.location.href = 'share.html';
+        });
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closeModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
 async function loadRecipeDetails() {
     const recipeId = getRecipeIdFromURL();
 
@@ -269,7 +300,7 @@ async function loadRecipeDetails() {
         return;
     }
 
-    // Render all recipe sections
+    updateBreadcrumb(recipe);
     renderRecipeHeader(recipe);
     renderRecipeImage(recipe);
     renderCulturalContext(recipe);
@@ -277,10 +308,9 @@ async function loadRecipeDetails() {
     renderSteps(recipe);
     updateProgressIndicators(recipe);
 
-    // Initialize interactive features
     initializeRecipeDetails();
+    initializeModal();
 
-    // Update page title
     document.title = `${recipe.title} - Sabor de Casa`;
 }
 
@@ -320,9 +350,7 @@ function showNotification(message, type = 'info') {
     }, 4000);
 }
 
-// Load recipe when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    // Update footer date
     if (typeof updateFooterDate === 'function') {
         updateFooterDate();
     }

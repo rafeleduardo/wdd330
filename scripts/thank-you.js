@@ -1,6 +1,4 @@
-﻿// Lógica para thank-you.html
-
-function displaySharedMemory() {
+﻿function displaySharedMemory() {
     // Get memory data from sessionStorage
     const memoryDataStr = sessionStorage.getItem('lastSharedMemory');
 
@@ -48,4 +46,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     displaySharedMemory();
+});
+function displayFormData() {
+    try {
+        const lastSharedMemory = sessionStorage.getItem('lastSharedMemory');
+
+        if (!lastSharedMemory) {
+            console.warn('No memory data found in sessionStorage');
+            return;
+        }
+
+        const memoryData = JSON.parse(lastSharedMemory);
+
+        const name = memoryData.name || 'N/A';
+        const recipe = memoryData.recipe || 'N/A';
+        const category = memoryData.category || 'N/A';
+        const memory = memoryData.memory || 'N/A';
+
+        const previewName = document.getElementById('previewName');
+        const previewRecipe = document.getElementById('previewRecipe');
+        const previewCategory = document.getElementById('previewCategory');
+        const previewMemoryText = document.getElementById('previewMemoryText');
+
+        if (previewName) previewName.textContent = name;
+        if (previewRecipe) previewRecipe.textContent = recipe;
+        if (previewCategory) {
+            const formattedCategory = category
+                .split('-')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+            previewCategory.textContent = formattedCategory;
+        }
+        if (previewMemoryText) previewMemoryText.textContent = memory;
+
+        sessionStorage.removeItem('lastSharedMemory');
+    } catch (error) {
+        console.error('Error displaying form data:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    displayFormData();
 });
