@@ -1,324 +1,323 @@
-﻿function getRecipeIdFromURL() {
+﻿const THEMEALDB_BASE = 'https://www.themealdb.com/api/json/v1/1';
+
+function getRecipeIdFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('id');
 }
 
 async function fetchRecipeById(id) {
     try {
-        const response = await fetch('data/recipes.json');
-        if (!response.ok) {
-            throw new Error('Failed to load recipes');
-        }
-        const recipes = await response.json();
-        return recipes.find(recipe => recipe.id === parseInt(id));
-    } catch (error) {
-        console.error('Error fetching recipe:', error);
+        const numericId = String(id || '').trim();
+        if (!/^\d+$/.test(numericId)) return null;
+
+        const url = `${THEMEALDB_BASE}/lookup.php?i=${numericId}`;
+        const res = await fetch(url);
+        if (!res.ok) return null;
+
+        const data = await res.json();
+        return Array.isArray(data.meals) && data.meals.length ? data.meals[0] : null;
+    } catch (err) {
+        console.error('Error fetching recipe:', err);
         return null;
     }
 }
 
-function updateBreadcrumb(recipe) {
-    const breadcrumbRecipeName = document.getElementById('breadcrumbRecipeName');
-    if (breadcrumbRecipeName) {
-        breadcrumbRecipeName.textContent = recipe.title || 'Recipe';
+function extractIngredients(meal) {
+    const list = [];
+    for (let i = 1; i <= 20; i++) {
+        const ingRaw = String(meal?.[`strIngredient${i}`] || '').trim();
+        const measureRaw = String(meal?.[`strMeasure${i}`] || '').trim();
+
+        const ing = ingRaw.replace(/\s+/g, ' ');
+        const measure = measureRaw.replace(/\s+/g, ' ');
+
+        const ingLower = ing.toLowerCase();
+        if (!ing) continue;
+        if (ingLower === 'null' || ingLower === 'n/a' || ingLower === 'na' || ingLower === '-') continue;
+
+        const measureLower = measure.toLowerCase();
+        const safeMeasure = (measureLower === 'null' || measureLower === 'n/a' || measureLower === 'na' || measureLower === '-') ? '' : measure;
+
+        list.push({ ing, measure: safeMeasure });
     }
+    return list;
 }
 
-function renderRecipeHeader(recipe) {
+function parseInstructionsToSteps(instructions) {
+    const text = String(instructions || '').trim();
+    if (!text) return [];
+
+    let lines = text
+        .split(/\r?\n+/)
+        .map(s => s.trim())
+        .filter(Boolean);
+
+    // fallback if API returns a single blob with no line breaks
+    if (lines.length <= 1) {
+        lines = text
+            .split(/(?<=[.!?])\s+/)
+            .map(s => s.trim())
+            .filter(Boolean);
+    }
+
+    // Remove leading numbering like "1) ", "1. ", "1: ", "1- "
+    return lines.map(line => line.replace(/^\s*\d+\s*[.)\-:]\s*/, ''));
+}
+
+function updateBreadcrumb(meal) {
+    const el = document.getElementById('breadcrumbRecipeName');
+    if (el) el.textContent = meal?.strMeal || 'Recipe';
+}
+
+function renderRecipeHeader(meal) {
     const titleElement = document.querySelector('.recipe-main-title');
     const authorElement = document.querySelector('.recipe-author');
     const statsElement = document.querySelector('.recipe-stats');
 
-    if (titleElement) titleElement.textContent = recipe.title || 'Recipe';
-    if (authorElement) authorElement.textContent = `By ${recipe.author || 'Unknown'}`;
+    if (titleElement) titleElement.textContent = meal?.strMeal || 'Recipe';
+
+    // TheMealDB doesn't provide "author". Use Area as an origin label.
+    if (authorElement) {
+        authorElement.textContent = meal?.strArea ? `Cuisine: ${meal.strArea}` : 'Cuisine: Unknown';
+    }
 
     if (statsElement) {
-        const totalTime = recipe.totalTime || recipe.prepTime || '45 min';
-        const servings = recipe.servings || '6';
-        const difficulty = recipe.difficulty || 'medium';
-
+        const category = meal?.strCategory || 'Unknown';
+        const area = meal?.strArea || 'Unknown';
         statsElement.innerHTML = `
-            <span class="stat-item">⏱ ${totalTime}</span>
-            <span class="stat-item">👥 Serves ${servings}</span>
-            <span class="stat-item">📊 ${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)} difficulty</span>
+            <span class="stat-item">🏷️ ${category}</span>
+            <span class="stat-item">🌍 ${area}</span>
         `;
     }
 }
 
-function renderRecipeImage(recipe) {
+function renderRecipeImage(meal) {
     const photoSection = document.querySelector('.recipe-photo-section');
     if (!photoSection) return;
 
     const placeholder = photoSection.querySelector('.recipe-photo-placeholder');
-    if (placeholder && recipe.image) {
-        const img = document.createElement('img');
-        img.srcset = `
-            images/recipes/${recipe.image}-400.webp 400w,
-            images/recipes/${recipe.image}-800.webp 800w,
-            images/recipes/${recipe.image}-1200.webp 1200w
-        `;
-        img.sizes = '(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px';
-        img.src = `images/recipes/${recipe.image}-1200.webp`;
-        img.alt = recipe.title;
-        img.className = 'recipe-photo';
-        img.loading = 'eager';
+    if (!placeholder) return;
 
-        placeholder.replaceWith(img);
+    const thumb = String(meal?.strMealThumb || '').trim();
+    if (!thumb) {
+        placeholder.textContent = 'No photo available';
+        return;
     }
+
+    const img = document.createElement('img');
+    img.src = thumb;
+    img.alt = meal?.strMeal || 'Recipe photo';
+    img.className = 'recipe-photo';
+    img.loading = 'eager';
+
+    placeholder.replaceWith(img);
 }
 
-function renderCulturalContext(recipe) {
+function renderCulturalContext(meal) {
     const culturalSection = document.querySelector('.cultural-context');
-    if (culturalSection && recipe.culturalContext) {
-        const paragraph = culturalSection.querySelector('p');
-        if (paragraph) {
-            paragraph.textContent = recipe.culturalContext;
-        }
-    }
+    if (!culturalSection) return;
+
+    const paragraph = culturalSection.querySelector('p');
+    if (!paragraph) return;
+
+    // TheMealDB doesn't have a story field; show useful metadata.
+    const bits = [];
+    if (meal?.strCategory) bits.push(`Category: ${meal.strCategory}`);
+    if (meal?.strArea) bits.push(`Origin: ${meal.strArea}`);
+    if (meal?.strSource) bits.push(`Source: ${meal.strSource}`);
+    if (meal?.strYoutube) bits.push(`Video: ${meal.strYoutube}`);
+
+    paragraph.textContent = bits.length ? bits.join(' • ') : 'No additional context available for this recipe.';
 }
 
-function renderIngredients(recipe) {
+function renderIngredients(meal) {
     const ingredientsList = document.querySelector('.ingredients-list');
     if (!ingredientsList) return;
 
-    const ingredients = recipe.detailedIngredients || recipe.ingredients;
-    if (!ingredients || !Array.isArray(ingredients)) return;
-
+    const items = extractIngredients(meal);
     ingredientsList.innerHTML = '';
-    ingredients.forEach((ingredient, index) => {
+
+    if (!items.length) {
+        const li = document.createElement('li');
+        li.className = 'ingredient-item';
+        li.textContent = 'No ingredients available.';
+        ingredientsList.appendChild(li);
+        return;
+    }
+
+    items.forEach((item, index) => {
         const li = document.createElement('li');
         li.className = 'ingredient-item';
 
-        const ingredientText = typeof ingredient === 'string'
-            ? ingredient
-            : `${ingredient.amount || ''} ${ingredient.name || ingredient}`.trim();
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `ingredient${index + 1}`;
+        checkbox.className = 'ingredient-checkbox';
 
-        li.innerHTML = `
-            <input type="checkbox" id="ingredient${index + 1}" class="ingredient-checkbox">
-            <label for="ingredient${index + 1}">${ingredientText}</label>
-        `;
+        const label = document.createElement('label');
+        label.setAttribute('for', checkbox.id);
+        label.textContent = (item.measure ? `${item.measure} ${item.ing}` : item.ing).trim();
+
+        li.appendChild(checkbox);
+        li.appendChild(label);
         ingredientsList.appendChild(li);
     });
 }
 
-function renderSteps(recipe) {
+function renderSteps(meal) {
     const instructionsSection = document.querySelector('.instructions-section');
     if (!instructionsSection) return;
 
-    const steps = recipe.steps || recipe.instructions;
-    if (!steps || !Array.isArray(steps)) return;
+    const steps = parseInstructionsToSteps(meal?.strInstructions);
 
     const heading = instructionsSection.querySelector('h3');
     instructionsSection.innerHTML = '';
-    if (heading) {
-        instructionsSection.appendChild(heading);
+    if (heading) instructionsSection.appendChild(heading);
+
+    if (!steps.length) {
+        const p = document.createElement('p');
+        p.className = 'step-text';
+        p.textContent = 'No instructions available for this recipe.';
+        instructionsSection.appendChild(p);
+        return;
     }
 
-    steps.forEach((step, index) => {
+    steps.forEach((stepText, index) => {
+        const stepNumber = index + 1;
+
         const stepDiv = document.createElement('div');
         stepDiv.className = `step-item${index === 0 ? ' active' : ''}`;
-        const stepNumber = index + 1;
-        stepDiv.setAttribute('data-step', stepNumber);
-
-        const stepText = typeof step === 'string' ? step : step.description || step.text || step;
-        const stepTime = typeof step === 'object' ? (step.time || '10 min') : '10 min';
+        stepDiv.setAttribute('data-step', String(stepNumber));
 
         stepDiv.innerHTML = `
             <div class="step-header">
                 <input type="checkbox" id="step${stepNumber}" class="step-checkbox">
                 <label for="step${stepNumber}" class="step-number">Step ${stepNumber}</label>
-                <span class="step-time">${stepTime}</span>
+                <span class="step-time">—</span>
             </div>
             <div class="step-content">
-                <p class="step-text">${stepText}</p>
+                <p class="step-text"></p>
             </div>
         `;
+
+        const p = stepDiv.querySelector('.step-text');
+        if (p) p.textContent = stepText;
+
         instructionsSection.appendChild(stepDiv);
     });
 }
 
-function updateProgressIndicators(recipe) {
-    const steps = recipe.steps || recipe.instructions || [];
-    const totalSteps = Array.isArray(steps) ? steps.length : 0;
+function updateProgressIndicators(meal) {
+    const stepsCount = parseInstructionsToSteps(meal?.strInstructions).length;
 
     const totalStepsSpan = document.getElementById('totalSteps');
-    if (totalStepsSpan) {
-        totalStepsSpan.textContent = totalSteps;
-    }
+    if (totalStepsSpan) totalStepsSpan.textContent = String(stepsCount);
 
-    const stepIndicator = document.getElementById('stepIndicator');
-    if (stepIndicator) {
-        stepIndicator.textContent = `Step 1 of ${totalSteps}`;
-    }
+    // Initial current step label is already in HTML (#currentStep)
+    const currentStepSpan = document.getElementById('currentStep');
+    if (currentStepSpan) currentStepSpan.textContent = stepsCount ? 'Step 1' : 'Step 0';
 }
 
 function initializeRecipeDetails() {
     const stepCheckboxes = document.querySelectorAll('.step-checkbox');
     const progressFill = document.getElementById('progressFill');
-    const currentStepSpan = document.getElementById('currentStep');
-
-    if (!stepCheckboxes.length) return;
 
     const totalSteps = stepCheckboxes.length;
 
-    updateProgress();
-
-    stepCheckboxes.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
-            const stepItem = this.closest('.step-item');
-            if (this.checked) {
-                stepItem.classList.add('completed');
-                if (index === totalSteps - 1) {
-                    const allCompleted = document.querySelectorAll('.step-checkbox:checked').length === totalSteps;
-                    if (allCompleted) {
-                        setTimeout(() => {
-                            openModal();
-                        }, 500);
-                    }
-                }
-            } else {
-                stepItem.classList.remove('completed');
-            }
-            updateProgress();
-        });
-    });
-
     function updateProgress() {
-        const completedSteps = document.querySelectorAll('.step-checkbox:checked').length;
-        const progressPercentage = (completedSteps / totalSteps) * 100;
+        const completed = document.querySelectorAll('.step-checkbox:checked').length;
+        const percent = totalSteps ? (completed / totalSteps) * 100 : 0;
 
-        if (progressFill) {
-            progressFill.style.width = `${progressPercentage}%`;
-        }
+        if (progressFill) progressFill.style.width = `${percent}%`;
 
-        const currentDisplayStep = Math.min(completedSteps + 1, totalSteps);
-
-        if (currentStepSpan) {
-            currentStepSpan.textContent = `Step ${currentDisplayStep}`;
-        }
-
+        const currentDisplayStep = totalSteps ? Math.min(completed + 1, totalSteps) : 0;
         const progressText = document.querySelector('.progress-text');
         if (progressText) {
             progressText.innerHTML = `<span id="currentStep">Step ${currentDisplayStep}</span> of <span id="totalSteps">${totalSteps}</span>`;
         }
     }
 
-    const ingredientCheckboxes = document.querySelectorAll('.ingredient-checkbox');
-    ingredientCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            const completedIngredients = document.querySelectorAll('.ingredient-checkbox:checked').length;
-            const totalIngredients = ingredientCheckboxes.length;
-            if (completedIngredients === totalIngredients) {
-                showNotification('✅ All ingredients prepared!', 'success');
+    updateProgress();
+
+    stepCheckboxes.forEach((cb, index) => {
+        cb.addEventListener('change', () => {
+            const stepItem = cb.closest('.step-item');
+            if (cb.checked) stepItem?.classList.add('completed');
+            else stepItem?.classList.remove('completed');
+
+            updateProgress();
+
+            const allCompleted = totalSteps > 0 && document.querySelectorAll('.step-checkbox:checked').length === totalSteps;
+            if (allCompleted && index === totalSteps - 1) {
+                setTimeout(() => openModal(), 400);
             }
+        });
+    });
+
+    const ingredientCheckboxes = document.querySelectorAll('.ingredient-checkbox');
+    ingredientCheckboxes.forEach(cb => {
+        cb.addEventListener('change', () => {
+            const allPrepared =
+                ingredientCheckboxes.length > 0 &&
+                document.querySelectorAll('.ingredient-checkbox:checked').length === ingredientCheckboxes.length;
+            if (allPrepared) showNotification('All ingredients prepared!', 'success');
         });
     });
 }
 
 function openModal() {
     const modal = document.getElementById('completionModal');
-    if (modal) {
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
+    if (!modal) return;
 
-        const focusableElements = modal.querySelectorAll('button, a');
-        const firstElement = focusableElements[0];
-
-        if (firstElement) {
-            firstElement.focus();
-        }
-
-        document.body.style.overflow = 'hidden';
-    }
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
     const modal = document.getElementById('completionModal');
-    if (modal) {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
+    if (!modal) return;
 
-        document.body.style.overflow = '';
-    }
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
 }
 
 function initializeModal() {
     const modal = document.getElementById('completionModal');
+    if (!modal) return;
+
     const closeBtn = document.getElementById('modalClose');
     const closeModalBtn = document.getElementById('closeModalBtn');
     const shareRecipeBtn = document.getElementById('shareRecipeBtn');
-    const overlay = modal;
 
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
-    }
+    closeBtn?.addEventListener('click', closeModal);
+    closeModalBtn?.addEventListener('click', closeModal);
 
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeModal);
-    }
+    shareRecipeBtn?.addEventListener('click', () => {
+        closeModal();
+        window.location.href = 'share.html';
+    });
 
-    if (shareRecipeBtn) {
-        shareRecipeBtn.addEventListener('click', () => {
-            closeModal();
-            window.location.href = 'share.html';
-        });
-    }
-
-    if (overlay) {
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) {
-                closeModal();
-            }
-        });
-    }
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
     });
-}
-
-async function loadRecipeDetails() {
-    const recipeId = getRecipeIdFromURL();
-
-    if (!recipeId) {
-        showNotification('No recipe ID provided. Redirecting to recipes page...', 'error');
-        setTimeout(() => {
-            window.location.href = 'recipes.html';
-        }, 2000);
-        return;
-    }
-
-    const recipe = await fetchRecipeById(recipeId);
-
-    if (!recipe) {
-        showNotification('Recipe not found. Redirecting to recipes page...', 'error');
-        setTimeout(() => {
-            window.location.href = 'recipes.html';
-        }, 2000);
-        return;
-    }
-
-    updateBreadcrumb(recipe);
-    renderRecipeHeader(recipe);
-    renderRecipeImage(recipe);
-    renderCulturalContext(recipe);
-    renderIngredients(recipe);
-    renderSteps(recipe);
-    updateProgressIndicators(recipe);
-
-    initializeRecipeDetails();
-    initializeModal();
-
-    document.title = `${recipe.title} - Sabor de Casa`;
 }
 
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
-    const backgroundColor = type === 'error' ? '#ff4444' : type === 'success' ? '#44aa44' : '#333';
+
+    const backgroundColor =
+        type === 'error' ? '#ff4444' :
+            type === 'success' ? '#44aa44' :
+                '#333';
+
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -337,24 +336,53 @@ function showNotification(message, type = 'info') {
         line-height: 1.4;
     `;
     document.body.appendChild(notification);
+
     setTimeout(() => {
         notification.style.opacity = '1';
         notification.style.transform = 'translateX(0)';
     }, 100);
+
     setTimeout(() => {
         notification.style.opacity = '0';
         notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 4000);
+        setTimeout(() => notification.remove(), 300);
+    }, 2500);
+}
+
+async function loadRecipeDetails() {
+    const recipeId = getRecipeIdFromURL();
+
+    if (!recipeId) {
+        showNotification('No recipe ID provided. Redirecting to recipes page...', 'error');
+        setTimeout(() => window.location.href = 'recipes.html', 1200);
+        return;
+    }
+
+    const meal = await fetchRecipeById(recipeId);
+
+    if (!meal) {
+        showNotification('Recipe not found. Redirecting to recipes page...', 'error');
+        setTimeout(() => window.location.href = 'recipes.html', 1200);
+        return;
+    }
+
+    updateBreadcrumb(meal);
+    renderRecipeHeader(meal);
+    renderRecipeImage(meal);
+    renderCulturalContext(meal);
+    renderIngredients(meal);
+    renderSteps(meal);
+    updateProgressIndicators(meal);
+
+    initializeRecipeDetails();
+    initializeModal();
+
+    document.title = `${meal.strMeal || 'Recipe'} - Sabor de Casa`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (typeof updateFooterDate === 'function') {
-        updateFooterDate();
-    }
+    if (typeof updateFooterDate === 'function') updateFooterDate();
+    if (typeof initHamburgerMenu === 'function') initHamburgerMenu();
 
     loadRecipeDetails();
 });
-

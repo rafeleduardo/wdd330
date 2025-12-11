@@ -126,6 +126,45 @@
     color: var(--color-text);
     margin-bottom: 12px;
 }
+
+.country-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid var(--color-gray);
+    border-radius: 10px;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    margin: 14px 0;
+}
+
+.country-flag {
+    width: 56px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--color-gray);
+    flex: 0 0 auto;
+}
+
+.country-meta {
+    min-width: 0;
+}
+
+.country-name {
+    margin: 0;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.country-details {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
 /* Modal Styles */
 .modal-overlay {
     position: fixed;
